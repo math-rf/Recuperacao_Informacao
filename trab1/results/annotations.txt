@@ -1,0 +1,19 @@
+Modelo: Vetorial
+Stopwords: False
+Stemming: False
+MAP: 0.15548498431167515
+
+Modelo: BM25
+Stopwords: False
+Stemming: False
+MAP: 0.15387609142501613
+
+Modelo: Vetorial
+Stopwords: True
+Stemming: False
+MAP: 0.15765422107824636
+
+Modelo: BM25
+Stopwords: True
+Stemming: False
+MAP: 0.1695623231388527
