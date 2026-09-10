@@ -167,7 +167,7 @@ def modelo_bm25(corpus_strings, consulta_string, k1=1.5, b=0.75):
 
 def executar_experimentos(del_stopwords=False, use_stemming=False):
     dataset = ir_datasets.load("cranfield")
-    
+    df_map = pd.DataFrame()
     doc_ids = []
     corpus_strings = []
     
@@ -176,18 +176,22 @@ def executar_experimentos(del_stopwords=False, use_stemming=False):
         text = doc.text
         if del_stopwords:
             text = remove_stopwords(text)
-        if stemming:
+        if use_stemming:
             text = stemming(text)
         corpus_strings.append(text) 
         
     # Prepara os Julgamentos de Relevância (Qrels)
     qrels = {}
+    gabarito = {}
     for qrel in dataset.qrels_iter():
         if qrel.query_id not in qrels:
             qrels[qrel.query_id] = []
+            gabarito[qrel.query_id] = {}
             
         if qrel.relevance >= 1:
             qrels[qrel.query_id].append(qrel.doc_id)
+
+        gabarito[qrel.query_id][qrel.doc_id] = qrel.relevance
 
     # Estruturas para guardar os resultados
     resultados_vetorial = {}
@@ -212,35 +216,59 @@ def executar_experimentos(del_stopwords=False, use_stemming=False):
         ranking_vetorial, pesos_query = modelo_vetorial(corpus_strings, q_texto)
         # Converte os índices de volta para os doc_ids originais
         docs_recuperados_vet = [doc_ids[idx] for (idx, score) in ranking_vetorial]
+
+        detalhes_vet = [
+            (doc_ids[idx], round(score, 4), gabarito.get(q_id, {}).get(doc_ids[idx], 0)) 
+            for idx, score in ranking_vetorial[:10]
+        ]
         
         resultados_vetorial[q_id] = {
             "recuperados": docs_recuperados_vet,
-            "relevantes": qrels[q_id]
+            "relevantes": qrels[q_id],
+            "top_k": detalhes_vet
         }
         
         # --- EXECUÇÃO BM25 ---
         ranking_bm25 = modelo_bm25(corpus_strings, q_texto)
         docs_recuperados_bm25 = [doc_ids[idx] for idx, score in ranking_bm25]
+
+        detalhes_bm25 = [
+            (doc_ids[idx], round(score, 4), gabarito.get(q_id, {}).get(doc_ids[idx], 0)) 
+            for idx, score in ranking_bm25[:10]
+        ]
         
         resultados_bm25[q_id] = {
             "recuperados": docs_recuperados_bm25,
-            "relevantes": qrels[q_id]
+            "relevantes": qrels[q_id],
+            "top_k": detalhes_bm25
         }
         
     # Avaliação Final
     metric_per_query_vet, map_vetorial = avaliar_sistema(resultados_vetorial, k=10)
     metric_per_query_bm25, map_bm25 = avaliar_sistema(resultados_bm25, k=10)
 
+    # Substitua os dois .append() por uma criação direta:
+    dados_map = [
+    {'Modelo': 'Vetorial', 'Stopwords_Removidas': del_stopwords, 'Stemming_Aplicado': use_stemming, 'MAP': map_vetorial},
+    {'Modelo': 'BM25', 'Stopwords_Removidas': del_stopwords, 'Stemming_Aplicado': use_stemming, 'MAP': map_bm25}
+    ]
+    df_map = pd.DataFrame(dados_map)
+
+    print(f"Modelo: Vetorial\nStopwords: {del_stopwords}\nStemming: {use_stemming}\nMAP: {map_vetorial}")
+    print(f"Modelo: BM25\nStopwords: {del_stopwords}\nStemming: {use_stemming}\nMAP: {map_bm25}")
+
+
     linhas = []
-    for modelo, metricas_dict in [('Vetorial', metric_per_query_vet), ('BM25', metric_per_query_bm25)]:
+    for modelo, metricas_dict, results in [('Vetorial', metric_per_query_vet, resultados_vetorial), ('BM25', metric_per_query_bm25, resultados_bm25)]:
         for q_id, metricas in metricas_dict.items():
             linha = {
                 'Query_ID': q_id,
                 'Modelo': modelo,
                 'Stopwords_Removidas': int(del_stopwords), # Salva como 0 ou 1
-                'Stemming_Aplicado': int(use_stemming)     # Salva como 0 ou 1
+                'Stemming_Aplicado': int(use_stemming),     # Salva como 0 ou 1
+                'Top_10': results[q_id]['top_k']
             }
             linha.update(metricas)
             linhas.append(linha)
             
-    return pd.DataFrame(linhas)
+    return pd.DataFrame(linhas), df_map
