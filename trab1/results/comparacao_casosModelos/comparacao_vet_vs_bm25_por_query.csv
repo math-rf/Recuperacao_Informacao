@@ -1,201 +1,221 @@
 Caso,Query_ID,Modelo,F1@10,Posicao,Doc_ID,Score,Relevancia,Texto
-1,158,Vetorial,0.2222222222222222,1,302,0.3511,1,what are the available properties of high-temperature air .
-1,158,Vetorial,0.2222222222222222,2,949,0.2396,0,what are the available properties of high-temperature air .
-1,158,Vetorial,0.2222222222222222,3,691,0.2391,0,what are the available properties of high-temperature air .
-1,158,Vetorial,0.2222222222222222,4,552,0.2227,2,what are the available properties of high-temperature air .
-1,158,Vetorial,0.2222222222222222,5,1199,0.2133,0,what are the available properties of high-temperature air .
-1,158,Vetorial,0.2222222222222222,6,328,0.209,0,what are the available properties of high-temperature air .
-1,158,Vetorial,0.2222222222222222,7,586,0.2004,0,what are the available properties of high-temperature air .
-1,158,Vetorial,0.2222222222222222,8,1157,0.1958,0,what are the available properties of high-temperature air .
-1,158,Vetorial,0.2222222222222222,9,59,0.1881,0,what are the available properties of high-temperature air .
-1,158,Vetorial,0.2222222222222222,10,405,0.1861,0,what are the available properties of high-temperature air .
-1,158,BM25,0.4444444444444445,1,302,13.0535,1,what are the available properties of high-temperature air .
-1,158,BM25,0.4444444444444445,2,552,10.8667,2,what are the available properties of high-temperature air .
-1,158,BM25,0.4444444444444445,3,691,10.5959,0,what are the available properties of high-temperature air .
-1,158,BM25,0.4444444444444445,4,949,10.2627,0,what are the available properties of high-temperature air .
-1,158,BM25,0.4444444444444445,5,1199,9.4726,0,what are the available properties of high-temperature air .
-1,158,BM25,0.4444444444444445,6,328,9.4275,0,what are the available properties of high-temperature air .
-1,158,BM25,0.4444444444444445,7,1011,9.2166,1,what are the available properties of high-temperature air .
-1,158,BM25,0.4444444444444445,8,1230,8.9384,0,what are the available properties of high-temperature air .
-1,158,BM25,0.4444444444444445,9,283,8.8876,0,what are the available properties of high-temperature air .
-1,158,BM25,0.4444444444444445,10,1010,8.8813,3,what are the available properties of high-temperature air .
-1,25,Vetorial,0.4210526315789474,1,277,0.3923,3,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,Vetorial,0.4210526315789474,2,214,0.3392,3,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,Vetorial,0.4210526315789474,3,990,0.2136,0,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,Vetorial,0.4210526315789474,4,772,0.2073,0,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,Vetorial,0.4210526315789474,5,215,0.1924,3,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,Vetorial,0.4210526315789474,6,216,0.1868,3,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,Vetorial,0.4210526315789474,7,987,0.1857,0,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,Vetorial,0.4210526315789474,8,945,0.1783,0,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,Vetorial,0.4210526315789474,9,540,0.1563,0,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,Vetorial,0.4210526315789474,10,121,0.1524,0,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,BM25,0.631578947368421,1,277,23.2904,3,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,BM25,0.631578947368421,2,215,20.6197,3,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,BM25,0.631578947368421,3,214,19.8379,3,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,BM25,0.631578947368421,4,216,17.4951,3,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,BM25,0.631578947368421,5,121,15.7895,0,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,BM25,0.631578947368421,6,213,15.5907,2,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,BM25,0.631578947368421,7,212,14.3951,3,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,BM25,0.631578947368421,8,987,14.3166,0,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,BM25,0.631578947368421,9,945,14.0728,0,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-1,25,BM25,0.631578947368421,10,511,14.0239,-1,"does a practical flow follow the theoretical concepts for the
-interaction between adjacent blade rows of a supersonic cascade ."
-2,191,Vetorial,0.608695652173913,1,766,0.3431,0,"what is the criterion for true panel flutter,  as opposed to small
+1,158,Vetorial,0.2222222222222222,1,302,0.3497,1,what are the available properties of high-temperature air .
+1,158,Vetorial,0.2222222222222222,2,691,0.2373,0,what are the available properties of high-temperature air .
+1,158,Vetorial,0.2222222222222222,3,949,0.2368,0,what are the available properties of high-temperature air .
+1,158,Vetorial,0.2222222222222222,4,552,0.214,2,what are the available properties of high-temperature air .
+1,158,Vetorial,0.2222222222222222,5,1199,0.2117,0,what are the available properties of high-temperature air .
+1,158,Vetorial,0.2222222222222222,6,328,0.2062,0,what are the available properties of high-temperature air .
+1,158,Vetorial,0.2222222222222222,7,1157,0.1949,0,what are the available properties of high-temperature air .
+1,158,Vetorial,0.2222222222222222,8,586,0.1923,0,what are the available properties of high-temperature air .
+1,158,Vetorial,0.2222222222222222,9,405,0.1861,0,what are the available properties of high-temperature air .
+1,158,Vetorial,0.2222222222222222,10,59,0.1858,0,what are the available properties of high-temperature air .
+1,158,BM25,0.4444444444444445,1,302,13.2197,1,what are the available properties of high-temperature air .
+1,158,BM25,0.4444444444444445,2,691,10.6761,0,what are the available properties of high-temperature air .
+1,158,BM25,0.4444444444444445,3,552,10.6336,2,what are the available properties of high-temperature air .
+1,158,BM25,0.4444444444444445,4,949,10.3013,0,what are the available properties of high-temperature air .
+1,158,BM25,0.4444444444444445,5,1199,9.5656,0,what are the available properties of high-temperature air .
+1,158,BM25,0.4444444444444445,6,328,9.5108,0,what are the available properties of high-temperature air .
+1,158,BM25,0.4444444444444445,7,1011,9.3002,1,what are the available properties of high-temperature air .
+1,158,BM25,0.4444444444444445,8,1230,8.9761,0,what are the available properties of high-temperature air .
+1,158,BM25,0.4444444444444445,9,982,8.9075,0,what are the available properties of high-temperature air .
+1,158,BM25,0.4444444444444445,10,1010,8.818,3,what are the available properties of high-temperature air .
+1,73,Vetorial,0.2666666666666666,1,332,0.4221,2,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,Vetorial,0.2666666666666666,2,573,0.3507,3,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,Vetorial,0.2666666666666666,3,541,0.3004,-1,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,Vetorial,0.2666666666666666,4,517,0.2193,0,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,Vetorial,0.2666666666666666,5,488,0.2127,0,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,Vetorial,0.2666666666666666,6,1112,0.2123,0,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,Vetorial,0.2666666666666666,7,359,0.2115,0,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,Vetorial,0.2666666666666666,8,410,0.2075,0,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,Vetorial,0.2666666666666666,9,572,0.2048,2,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,Vetorial,0.2666666666666666,10,401,0.2005,2,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,BM25,0.4666666666666667,1,332,33.101,2,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,BM25,0.4666666666666667,2,541,29.1585,-1,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,BM25,0.4666666666666667,3,573,23.425,3,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,BM25,0.4666666666666667,4,401,23.4069,2,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,BM25,0.4666666666666667,5,1296,22.1947,0,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,BM25,0.4666666666666667,6,625,21.7891,2,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,BM25,0.4666666666666667,7,577,18.2795,4,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,BM25,0.4666666666666667,8,488,18.1599,0,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,BM25,0.4666666666666667,9,574,17.9111,3,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+1,73,BM25,0.4666666666666667,10,572,17.26,2,"what role does the effect of chemical reaction (particularly when out of
+equilibrium) play in the similitude laws governing hypersonic flows over
+slender aerodynamic bodies ."
+2,191,Vetorial,0.608695652173913,1,766,0.3194,0,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,Vetorial,0.608695652173913,2,856,0.3353,3,"what is the criterion for true panel flutter,  as opposed to small
+2,191,Vetorial,0.608695652173913,2,856,0.3078,3,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,Vetorial,0.608695652173913,3,1008,0.3095,4,"what is the criterion for true panel flutter,  as opposed to small
+2,191,Vetorial,0.608695652173913,3,1008,0.2886,4,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,Vetorial,0.608695652173913,4,857,0.2914,2,"what is the criterion for true panel flutter,  as opposed to small
+2,191,Vetorial,0.608695652173913,4,857,0.2689,2,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,Vetorial,0.608695652173913,5,391,0.2892,3,"what is the criterion for true panel flutter,  as opposed to small
+2,191,Vetorial,0.608695652173913,5,859,0.2678,0,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,Vetorial,0.608695652173913,6,859,0.2877,0,"what is the criterion for true panel flutter,  as opposed to small
+2,191,Vetorial,0.608695652173913,6,391,0.2674,3,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,Vetorial,0.608695652173913,7,658,0.2814,3,"what is the criterion for true panel flutter,  as opposed to small
+2,191,Vetorial,0.608695652173913,7,858,0.2543,2,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,Vetorial,0.608695652173913,8,858,0.2762,2,"what is the criterion for true panel flutter,  as opposed to small
+2,191,Vetorial,0.608695652173913,8,658,0.2539,3,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,Vetorial,0.608695652173913,9,948,0.2761,3,"what is the criterion for true panel flutter,  as opposed to small
+2,191,Vetorial,0.608695652173913,9,627,0.2535,0,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,Vetorial,0.608695652173913,10,627,0.2708,0,"what is the criterion for true panel flutter,  as opposed to small
+2,191,Vetorial,0.608695652173913,10,948,0.2534,3,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,BM25,0.2608695652173913,1,766,19.8755,0,"what is the criterion for true panel flutter,  as opposed to small
+2,191,BM25,0.3478260869565217,1,766,20.1088,0,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,BM25,0.2608695652173913,2,827,17.4512,0,"what is the criterion for true panel flutter,  as opposed to small
+2,191,BM25,0.3478260869565217,2,627,17.6241,0,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,BM25,0.2608695652173913,3,627,17.3722,0,"what is the criterion for true panel flutter,  as opposed to small
+2,191,BM25,0.3478260869565217,3,827,17.5456,0,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,BM25,0.2608695652173913,4,894,15.6473,-1,"what is the criterion for true panel flutter,  as opposed to small
+2,191,BM25,0.3478260869565217,4,894,15.6371,-1,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,BM25,0.2608695652173913,5,658,15.52,3,"what is the criterion for true panel flutter,  as opposed to small
+2,191,BM25,0.3478260869565217,5,658,15.2425,3,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,BM25,0.2608695652173913,6,15,14.6915,3,"what is the criterion for true panel flutter,  as opposed to small
+2,191,BM25,0.3478260869565217,6,15,14.7426,3,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,BM25,0.2608695652173913,7,1392,14.4938,0,"what is the criterion for true panel flutter,  as opposed to small
+2,191,BM25,0.3478260869565217,7,1392,14.4656,0,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,BM25,0.2608695652173913,8,856,14.3549,3,"what is the criterion for true panel flutter,  as opposed to small
+2,191,BM25,0.3478260869565217,8,856,14.2631,3,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,BM25,0.2608695652173913,9,541,14.1737,0,"what is the criterion for true panel flutter,  as opposed to small
+2,191,BM25,0.3478260869565217,9,541,14.0194,0,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,191,BM25,0.2608695652173913,10,75,13.7991,0,"what is the criterion for true panel flutter,  as opposed to small
+2,191,BM25,0.3478260869565217,10,1008,13.8297,4,"what is the criterion for true panel flutter,  as opposed to small
 amplitude vibration arising from acoustic disturbances ."
-2,43,Vetorial,0.625,1,467,0.3775,1,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,Vetorial,0.625,2,503,0.3111,3,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,Vetorial,0.625,3,469,0.3034,1,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,Vetorial,0.625,4,194,0.3021,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,Vetorial,0.625,5,404,0.294,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,Vetorial,0.625,6,440,0.2682,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,Vetorial,0.625,7,526,0.255,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,Vetorial,0.625,8,39,0.2499,3,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,Vetorial,0.625,9,312,0.2484,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,Vetorial,0.625,10,468,0.2148,1,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,BM25,0.3749999999999999,1,467,18.7466,1,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,BM25,0.3749999999999999,2,469,17.5959,1,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,BM25,0.3749999999999999,3,404,15.4918,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,BM25,0.3749999999999999,4,503,14.6209,3,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,BM25,0.3749999999999999,5,194,13.3689,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,BM25,0.3749999999999999,6,496,12.3811,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,BM25,0.3749999999999999,7,440,12.2844,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,BM25,0.3749999999999999,8,201,12.0964,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,BM25,0.3749999999999999,9,312,11.9094,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-2,43,BM25,0.3749999999999999,10,526,11.906,0,"can the transonic flow around an arbitrary smooth thin airfoil be
-analysed in a simple approximate way ."
-3,13,Vetorial,0.0,1,496,0.5404,-1,what is the basic mechanism of the transonic aileron buzz .
-3,13,Vetorial,0.0,2,643,0.2588,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,Vetorial,0.0,3,199,0.2456,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,Vetorial,0.0,4,903,0.2308,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,Vetorial,0.0,5,313,0.1756,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,Vetorial,0.0,6,660,0.152,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,Vetorial,0.0,7,468,0.1466,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,Vetorial,0.0,8,1268,0.1428,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,Vetorial,0.0,9,38,0.1411,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,Vetorial,0.0,10,801,0.1355,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,BM25,0.0,1,496,24.8648,-1,what is the basic mechanism of the transonic aileron buzz .
-3,13,BM25,0.0,2,903,14.9803,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,BM25,0.0,3,520,12.1658,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,BM25,0.0,4,313,10.6135,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,BM25,0.0,5,643,9.8342,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,BM25,0.0,6,199,9.5433,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,BM25,0.0,7,38,9.4503,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,BM25,0.0,8,440,9.1552,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,BM25,0.0,9,880,9.127,0,what is the basic mechanism of the transonic aileron buzz .
-3,13,BM25,0.0,10,415,7.5614,0,what is the basic mechanism of the transonic aileron buzz .
-3,31,Vetorial,0.0,1,751,0.2412,-1,"what size of end plate can be safely used to simulate two-dimensional
+2,77,Vetorial,0.5,1,1395,0.3207,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,Vetorial,0.5,2,667,0.3027,3,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,Vetorial,0.5,3,1264,0.2808,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,Vetorial,0.5,4,329,0.2723,4,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,Vetorial,0.5,5,134,0.2436,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,Vetorial,0.5,6,630,0.2272,-1,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,Vetorial,0.5,7,668,0.2252,2,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,Vetorial,0.5,8,1391,0.221,4,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,Vetorial,0.5,9,170,0.2113,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,Vetorial,0.5,10,504,0.2091,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,BM25,0.25,1,1395,26.002,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,BM25,0.25,2,667,22.5224,3,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,BM25,0.25,3,1264,22.0818,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,BM25,0.25,4,329,21.4363,4,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,BM25,0.25,5,630,20.4434,-1,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,BM25,0.25,6,170,17.8095,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,BM25,0.25,7,272,17.0952,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,BM25,0.25,8,347,17.0298,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,BM25,0.25,9,134,17.0111,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+2,77,BM25,0.25,10,572,16.2892,0,"how close is the comparison of the shock layer theory with existing
+experiments in the low reynolds number (merged-layer) regime ."
+3,13,Vetorial,0.0,1,496,0.5367,-1,what is the basic mechanism of the transonic aileron buzz .
+3,13,Vetorial,0.0,2,643,0.2567,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,Vetorial,0.0,3,903,0.2243,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,Vetorial,0.0,4,199,0.2179,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,Vetorial,0.0,5,313,0.1697,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,Vetorial,0.0,6,660,0.1506,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,Vetorial,0.0,7,468,0.143,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,Vetorial,0.0,8,38,0.1407,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,Vetorial,0.0,9,1268,0.1406,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,Vetorial,0.0,10,801,0.1349,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,BM25,0.0,1,496,25.0828,-1,what is the basic mechanism of the transonic aileron buzz .
+3,13,BM25,0.0,2,903,14.8264,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,BM25,0.0,3,520,11.934,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,BM25,0.0,4,313,10.5028,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,BM25,0.0,5,643,9.8389,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,BM25,0.0,6,38,9.5623,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,BM25,0.0,7,199,9.4746,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,BM25,0.0,8,440,9.3314,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,BM25,0.0,9,880,9.0294,0,what is the basic mechanism of the transonic aileron buzz .
+3,13,BM25,0.0,10,415,7.6635,0,what is the basic mechanism of the transonic aileron buzz .
+3,31,Vetorial,0.0,1,751,0.3934,-1,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,Vetorial,0.0,2,247,0.2009,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,Vetorial,0.0,2,247,0.189,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,Vetorial,0.0,3,68,0.1841,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,Vetorial,0.0,3,68,0.1814,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,Vetorial,0.0,4,916,0.1784,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,Vetorial,0.0,4,916,0.1688,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,Vetorial,0.0,5,918,0.1742,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,Vetorial,0.0,5,918,0.1625,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,Vetorial,0.0,6,1341,0.1723,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,Vetorial,0.0,6,1341,0.1593,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,Vetorial,0.0,7,551,0.1699,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,Vetorial,0.0,7,1153,0.1532,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,Vetorial,0.0,8,228,0.1661,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,Vetorial,0.0,8,1245,0.1523,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,Vetorial,0.0,9,749,0.1656,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,Vetorial,0.0,9,749,0.1488,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,Vetorial,0.0,10,919,0.1652,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,Vetorial,0.0,10,919,0.1479,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,BM25,0.0,1,751,18.8087,-1,"what size of end plate can be safely used to simulate two-dimensional
+3,31,BM25,0.0,1,751,27.3868,-1,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,BM25,0.0,2,1209,18.0364,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,BM25,0.0,2,1209,18.5067,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,BM25,0.0,3,1153,17.811,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,BM25,0.0,3,1153,17.8802,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,BM25,0.0,4,228,16.745,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,BM25,0.0,4,1245,16.5397,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,BM25,0.0,5,1245,16.2107,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,BM25,0.0,5,228,15.6837,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,BM25,0.0,6,1082,15.4516,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,BM25,0.0,6,1082,15.6742,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,BM25,0.0,7,749,14.9607,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,BM25,0.0,7,916,14.7852,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,BM25,0.0,8,247,14.5072,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,BM25,0.0,8,247,14.5243,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,BM25,0.0,9,918,13.9358,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,BM25,0.0,9,918,14.061,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
-3,31,BM25,0.0,10,916,13.8746,0,"what size of end plate can be safely used to simulate two-dimensional
+3,31,BM25,0.0,10,749,13.8938,0,"what size of end plate can be safely used to simulate two-dimensional
 flow conditions over a bluff cylindrical body of finite aspect ratio ."
