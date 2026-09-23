@@ -1,0 +1,46 @@
+Consulta mais sensivel a variacao de b (k1=1.2)
+Query_ID: 119
+Texto da consulta: what is the effect of initial axisymmetric deviations from circularity
+on the non linear (large-deflection) load-deflection response of
+cylinders under hydrostatic pressure .
+Config base: b=0.0    Config comparacao: b=1.0
+
+--- Caso 1: Falso Positivo em b=0.0 -> Verdadeiro Negativo em b=1.0 ---
+Doc_ID: 1056
+Rank em b=0.0: 6 (no Top-10, mas NAO e relevante)
+Rank em b=1.0: 19 (fora do Top-10, corretamente)
+Texto do documento: axisymmetric large deflections of circular plates subjected
+to thermal and mechanical load .
+  this paper is concerned with the nonlinear
+axisymmetric analysis of circular plates with in-plane
+edge restraint .  both temperature and mechanical
+loads are accommodated as an extension of
+investigations performed for the isothermal mechanical
+loading problem .  an exact mathematical
+formulation within the framework of the v. karman large
+strain-displacement relations is developed .  the
+equilibrium equations and boundary conditions are then
+derived by utilizing the calculus of variations for
+arbitrary axisymmetrical temperatures and normal
+distributed loading .  the satisfaction of equilibrium and
+compatibility equations requires the solution of two
+simultaneous nonlinear ordinary differential equations
+subject to the prescribed boundary conditions .
+analytical solutions of such equations are apparently not
+possible and therefore numerical procedures must be
+employed .
+  a finite difference procedure utilizing /relaxed
+iterations,/ developed by h. keller and e. reiss, and
+employed by them for the solution of isothermal
+problems with apparently unlimited load parameter ranges,
+is used here for combined thermo-mechanical problems .
+numerical results are presented for the special case of
+a simply supported circular plate with radially
+immovable boundaries, subject to a uniform pressure and an
+arbitrary temperature variation through the thickness
+tained for a large range of temperature and load
+parameters .  however, because of space limitations, only
+a limited amount of data are presented in this paper .
+
+Top-10 com b=0.0: 928, 926, 1051, 1024, 765, 1056, 897, 822, 827, 956
+Top-10 com b=1.0: 926, 928, 533, 897, 1033, 1024, 765, 1051, 744, 642
