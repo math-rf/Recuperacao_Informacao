@@ -26,7 +26,7 @@ nltk.download('punkt_tab', quiet=True)
 
 # Stopwords carregadas uma única vez (evita reconstruir o set a cada chamada
 # de remove_stopwords, que antes era chamada centenas de vezes por execução).
-_STOPWORDS = set(stopwords.words())
+_STOPWORDS = set(stopwords.words('english'))
 
 
 # ---------------------------------------------------------------------------
