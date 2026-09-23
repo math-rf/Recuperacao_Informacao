@@ -29,8 +29,8 @@ Consulta 1 | Modelo: BM25
 Texto original:   what similarity laws must be obeyed when constructing aeroelastic models of heated high speed aircraft .
 Texto modificado: similarity laws aeroelastic models heated high speed aircraft
 
-Top-10 original:   ['51', '486', '12', '184', '878', '665', '573', '746', '944', '141']
-Top-10 modificado: ['486', '51', '12', '184', '878', '746', '141', '13', '78', '747']
+Top-10 original:   ['51', '486', '12', '184', '878', '573', '665', '746', '944', '141']
+Top-10 modificado: ['486', '51', '12', '184', '746', '878', '141', '13', '78', '747']
 
 Similaridade Jaccard (Top-10 original x modificado): 0.54  (7/10 documentos em comum)
 
@@ -40,14 +40,15 @@ Documentos que ENTRARAM no Top-10 (só na versão modificada):
   - 747 (Nao relevante)
 
 Documentos que SAÍRAM do Top-10 (só na versão original):
-  - 665 (Nao relevante)
   - 573 (Nao relevante)
+  - 665 (Nao relevante)
   - 944 (Nao relevante)
 
 Documentos que permaneceram, mas mudaram de posição:
   - 51: posição 1 -> 2 (desceu)
   - 486: posição 2 -> 1 (subiu)
-  - 746: posição 8 -> 6 (subiu)
+  - 878: posição 5 -> 6 (desceu)
+  - 746: posição 8 -> 5 (subiu)
   - 141: posição 10 -> 7 (subiu)
 
 Resumo: 1 documento(s) relevante(s) entraram no Top-10 e 0 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
@@ -58,8 +59,8 @@ Consulta 2 | Modelo: Vetorial
 Texto original:   what are the structural and aeroelastic problems associated with flight of high speed aircraft .
 Texto modificado: structural aeroelastic problems flight supersonic aircraft
 
-Top-10 original:   ['12', '51', '746', '1169', '884', '184', '100', '253', '792', '14']
-Top-10 modificado: ['12', '51', '746', '884', '184', '1169', '253', '100', '284', '810']
+Top-10 original:   ['12', '51', '746', '1169', '884', '184', '100', '253', '429', '792']
+Top-10 modificado: ['12', '51', '746', '884', '1169', '184', '253', '100', '284', '810']
 
 Similaridade Jaccard (Top-10 original x modificado): 0.67  (8/10 documentos em comum)
 
@@ -68,17 +69,16 @@ Documentos que ENTRARAM no Top-10 (só na versão modificada):
   - 810 (Nao relevante)
 
 Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 429 (Nao relevante)
   - 792 (Nao relevante)
-  - 14 (Relevante)
 
 Documentos que permaneceram, mas mudaram de posição:
-  - 1169: posição 4 -> 6 (desceu)
+  - 1169: posição 4 -> 5 (desceu)
   - 884: posição 5 -> 4 (subiu)
-  - 184: posição 6 -> 5 (subiu)
   - 100: posição 7 -> 8 (desceu)
   - 253: posição 8 -> 7 (subiu)
 
-Resumo: 0 documento(s) relevante(s) entraram no Top-10 e 1 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+Resumo: 0 documento(s) relevante(s) entraram no Top-10 e 0 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
 
 ==============================================================================
 Consulta 2 | Modelo: BM25
@@ -86,7 +86,7 @@ Consulta 2 | Modelo: BM25
 Texto original:   what are the structural and aeroelastic problems associated with flight of high speed aircraft .
 Texto modificado: structural aeroelastic problems flight supersonic aircraft
 
-Top-10 original:   ['12', '746', '51', '100', '1089', '1169', '184', '172', '141', '810']
+Top-10 original:   ['12', '746', '51', '1089', '100', '1169', '184', '141', '172', '810']
 Top-10 modificado: ['12', '51', '284', '184', '746', '810', '1169', '14', '1361', '884']
 
 Similaridade Jaccard (Top-10 original x modificado): 0.43  (6/10 documentos em comum)
@@ -98,10 +98,10 @@ Documentos que ENTRARAM no Top-10 (só na versão modificada):
   - 884 (Nao relevante)
 
 Documentos que SAÍRAM do Top-10 (só na versão original):
-  - 100 (Nao relevante)
   - 1089 (Nao relevante)
-  - 172 (Nao relevante)
+  - 100 (Nao relevante)
   - 141 (Nao relevante)
+  - 172 (Nao relevante)
 
 Documentos que permaneceram, mas mudaram de posição:
   - 746: posição 2 -> 5 (desceu)
@@ -145,7 +145,7 @@ Consulta 3 | Modelo: BM25
 Texto original:   can a criterion be developed to show empirically the validity of flow solutions for chemically reacting gas mixtures based on the assumption of thermodynamic equilibrium .
 Texto modificado: validity of flow solutions chemically reacting gas mixtures thermodynamic equilibrium
 
-Top-10 original:   ['488', '166', '236', '1061', '1312', '259', '1189', '1011', '167', '110']
+Top-10 original:   ['488', '166', '236', '1312', '259', '1061', '1189', '1011', '167', '110']
 Top-10 modificado: ['488', '166', '236', '1189', '167', '259', '1312', '1061', '185', '1011']
 
 Similaridade Jaccard (Top-10 original x modificado): 0.82  (9/10 documentos em comum)
@@ -157,8 +157,9 @@ Documentos que SAÍRAM do Top-10 (só na versão original):
   - 110 (Nao relevante)
 
 Documentos que permaneceram, mas mudaram de posição:
-  - 1061: posição 4 -> 8 (desceu)
-  - 1312: posição 5 -> 7 (desceu)
+  - 1312: posição 4 -> 7 (desceu)
+  - 259: posição 5 -> 6 (desceu)
+  - 1061: posição 6 -> 8 (desceu)
   - 1189: posição 7 -> 4 (subiu)
   - 1011: posição 8 -> 10 (desceu)
   - 167: posição 9 -> 5 (subiu)
@@ -171,8 +172,8 @@ Consulta 4 | Modelo: Vetorial
 Texto original:   what is the present state of the art in fluid mechanics as applied to re-entry vehicles.
 Texto modificado: fluid mechanics applied to re-entry vehicles spacecraft
 
-Top-10 original:   ['554', '507', '1348', '716', '898', '509', '1217', '1379', '164', '1345']
-Top-10 modificado: ['958', '554', '507', '716', '1348', '1217', '1379', '164', '1345', '1219']
+Top-10 original:   ['554', '1348', '716', '507', '509', '898', '1217', '1379', '164', '1345']
+Top-10 modificado: ['958', '554', '716', '507', '1348', '1217', '1379', '164', '1345', '1219']
 
 Similaridade Jaccard (Top-10 original x modificado): 0.67  (8/10 documentos em comum)
 
@@ -181,13 +182,12 @@ Documentos que ENTRARAM no Top-10 (só na versão modificada):
   - 1219 (Nao relevante)
 
 Documentos que SAÍRAM do Top-10 (só na versão original):
-  - 898 (Nao relevante)
   - 509 (Nao relevante)
+  - 898 (Nao relevante)
 
 Documentos que permaneceram, mas mudaram de posição:
   - 554: posição 1 -> 2 (desceu)
-  - 507: posição 2 -> 3 (desceu)
-  - 1348: posição 3 -> 5 (desceu)
+  - 1348: posição 2 -> 5 (desceu)
   - 1217: posição 7 -> 6 (subiu)
   - 1379: posição 8 -> 7 (subiu)
   - 164: posição 9 -> 8 (subiu)
@@ -202,7 +202,7 @@ Texto original:   what is the present state of the art in fluid mechanics as app
 Texto modificado: fluid mechanics applied to re-entry vehicles spacecraft
 
 Top-10 original:   ['509', '716', '1217', '82', '1219', '898', '274', '1379', '1348', '554']
-Top-10 modificado: ['716', '1217', '1219', '163', '274', '509', '1379', '1291', '958', '82']
+Top-10 modificado: ['716', '1217', '1219', '163', '274', '509', '1379', '1291', '82', '958']
 
 Similaridade Jaccard (Top-10 original x modificado): 0.54  (7/10 documentos em comum)
 
@@ -220,7 +220,7 @@ Documentos que permaneceram, mas mudaram de posição:
   - 509: posição 1 -> 6 (desceu)
   - 716: posição 2 -> 1 (subiu)
   - 1217: posição 3 -> 2 (subiu)
-  - 82: posição 4 -> 10 (desceu)
+  - 82: posição 4 -> 9 (desceu)
   - 1219: posição 5 -> 3 (subiu)
   - 274: posição 7 -> 5 (subiu)
   - 1379: posição 8 -> 7 (subiu)
@@ -233,25 +233,26 @@ Consulta 5 | Modelo: Vetorial
 Texto original:   has anyone developed an analysis which accurately establishes the large deflection behavior of conical shells .
 Texto modificado: analysis large deflection behavior conical shells
 
-Top-10 original:   ['930', '1070', '1058', '1059', '926', '1068', '1044', '830', '743', '898']
-Top-10 modificado: ['930', '1058', '1070', '1059', '926', '1044', '830', '898', '931', '739']
+Top-10 original:   ['930', '1070', '1058', '1059', '926', '1068', '1044', '898', '830', '1361']
+Top-10 modificado: ['930', '1058', '1070', '1059', '1044', '926', '898', '830', '931', '1048']
 
 Similaridade Jaccard (Top-10 original x modificado): 0.67  (8/10 documentos em comum)
 
 Documentos que ENTRARAM no Top-10 (só na versão modificada):
   - 931 (Nao relevante)
-  - 739 (Nao relevante)
+  - 1048 (Nao relevante)
 
 Documentos que SAÍRAM do Top-10 (só na versão original):
   - 1068 (Nao relevante)
-  - 743 (Nao relevante)
+  - 1361 (Nao relevante)
 
 Documentos que permaneceram, mas mudaram de posição:
   - 1070: posição 2 -> 3 (desceu)
   - 1058: posição 3 -> 2 (subiu)
-  - 1044: posição 7 -> 6 (subiu)
-  - 830: posição 8 -> 7 (subiu)
-  - 898: posição 10 -> 8 (subiu)
+  - 926: posição 5 -> 6 (desceu)
+  - 1044: posição 7 -> 5 (subiu)
+  - 898: posição 8 -> 7 (subiu)
+  - 830: posição 9 -> 8 (subiu)
 
 Resumo: 0 documento(s) relevante(s) entraram no Top-10 e 0 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
 
@@ -262,7 +263,7 @@ Texto original:   has anyone developed an analysis which accurately establishes 
 Texto modificado: analysis large deflection behavior conical shells
 
 Top-10 original:   ['930', '1058', '1070', '1059', '1068', '926', '1053', '743', '931', '830']
-Top-10 modificado: ['1058', '930', '1059', '1070', '931', '926', '830', '743', '1048', '852']
+Top-10 modificado: ['1058', '930', '1059', '1070', '931', '926', '830', '1048', '743', '852']
 
 Similaridade Jaccard (Top-10 original x modificado): 0.67  (8/10 documentos em comum)
 
@@ -279,6 +280,7 @@ Documentos que permaneceram, mas mudaram de posição:
   - 1058: posição 2 -> 1 (subiu)
   - 1070: posição 3 -> 4 (desceu)
   - 1059: posição 4 -> 3 (subiu)
+  - 743: posição 8 -> 9 (desceu)
   - 931: posição 9 -> 5 (subiu)
   - 830: posição 10 -> 7 (subiu)
 

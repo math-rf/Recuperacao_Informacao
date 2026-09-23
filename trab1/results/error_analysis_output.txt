@@ -6,7 +6,7 @@ Query (antes da limpeza):
 of heated high speed aircraft .
 
 Query limpa vetorizada:
-  [similar, law, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
+  [similar, law, must, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
 
 Documento NÃO relevante (dentro do Top-K)
   doc_id: 359
@@ -35,7 +35,7 @@ Query (antes da limpeza):
 of heated high speed aircraft .
 
 Query limpa vetorizada:
-  [similar, law, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
+  [similar, law, must, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
 
 Documento NÃO relevante (dentro do Top-K)
   doc_id: 746
@@ -73,12 +73,12 @@ Query (antes da limpeza):
 of heated high speed aircraft .
 
 Query limpa vetorizada:
-  [similar, law, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
+  [similar, law, must, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
 
 Documento RELEVANTE (fora do Top-K)
   doc_id: 29
   relevância real: 2
-  posição no ranking: 63
+  posição no ranking: 67
 
 Texto do documento:
 a simple model study of transient temperature and thermal
@@ -118,7 +118,7 @@ Query (antes da limpeza):
 of heated high speed aircraft .
 
 Query limpa vetorizada:
-  [similar, law, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
+  [similar, law, must, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
 
 Documento NÃO relevante (dentro do Top-K)
   doc_id: 486
@@ -164,7 +164,7 @@ Query (antes da limpeza):
 of heated high speed aircraft .
 
 Query limpa vetorizada:
-  [similar, law, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
+  [similar, law, must, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
 
 Documento NÃO relevante (dentro do Top-K)
   doc_id: 878
@@ -193,12 +193,12 @@ Query (antes da limpeza):
 of heated high speed aircraft .
 
 Query limpa vetorizada:
-  [similar, law, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
+  [similar, law, must, obey, construct, aeroelast, model, heat, high, speed, aircraft, .]
 
 Documento RELEVANTE (fora do Top-K)
   doc_id: 29
   relevância real: 2
-  posição no ranking: 34
+  posição no ranking: 40
 
 Texto do documento:
 a simple model study of transient temperature and thermal
