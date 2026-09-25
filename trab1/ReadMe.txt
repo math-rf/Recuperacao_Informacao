@@ -47,9 +47,12 @@ Rode os scripts nesta ordem:
     python comparacao_modelos.py   (MAP agregado; precisa do main.py)
     python query_analysis.py       (melhores/piores consultas; precisa do
                                     main.py e do getting_queries.py)
+    python metricas_medias.py      (retorna medias de metrica por modelo e configuração
+                                    de pré-processamento)
     python bm25_params_test.py     (variacao dos parametros k1 e b do BM25)
     python error_analysis.py       (analise de erros)
     python custom_queries.py       (consultas originais x modificadas)
+    python plot_custom_queries.py  (ranking top10 de consulta original x modificada)
 
 Os resultados (CSV, graficos e relatorios) sao salvos em trab1/results/.
 Rodar novamente sobrescreve os arquivos existentes.
