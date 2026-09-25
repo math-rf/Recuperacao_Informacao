@@ -30,23 +30,23 @@ SEPARADOR = "=" * 78
 CONSULTAS_CUSTOMIZADAS = {
     '1': (
         "what similarity laws must be obeyed when constructing aeroelastic models of heated high speed aircraft .",
-        "similarity laws aeroelastic models heated high speed aircraft"  # Reduzido apenas para palavras-chave
+        "similarity law aeroelastic model aircraft aerodynamic heating thermal effect high speed supersonic"  # expansao semantica
     ),
     '2': (
         "what are the structural and aeroelastic problems associated with flight of high speed aircraft .",
-        "structural aeroelastic problems flight supersonic aircraft"  # Troca de "high speed" por sinônimo "supersonic"
+        "structural aeroelastic problem flutter deformation instability high speed supersonic aircraft"  # expansao por termos relacionados
     ),
     '3': (
-        "can a criterion be developed to show empirically the validity of flow solutions for chemically reacting gas mixtures based on the assumption of thermodynamic equilibrium .",
-        "validity of flow solutions chemically reacting gas mixtures thermodynamic equilibrium"
+        "can a criterion be developed to show empirically the validity of flow solutions for chemically reacting gas mixtures based on the simplifying assumption of instantaneous local chemical equilibrium .",
+        "chemically reacting gas local chemical equilibrium" # remocao de termos irrelevantes
     ),
     '4': (
-        "what is the present state of the art in fluid mechanics as applied to re-entry vehicles.",
-        "fluid mechanics applied to re-entry vehicles spacecraft"  # Expansão adicionando um termo específico
+        "what is the present state of the theory of quasi-conical flows .",
+        "quasi conical flow"  # ideia principal da consulta, sem palavras irrelevantes
     ),
     '5': (
-        "has anyone developed an analysis which accurately establishes the large deflection behavior of conical shells .",
-        "analysis large deflection behavior conical shells"
+        "has anyone developed an analysis which accurately establishes the large deflection behaviour of conical shells .",  
+        "conical conical shells shells analysis" # ponderacao de termos
     ),
 }
 
