@@ -1,0 +1,318 @@
+==============================================================================
+Consulta 1 | Modelo: Vetorial
+
+Texto original:   what similarity laws must be obeyed when constructing aeroelastic models of heated high speed aircraft .
+Texto modificado: similarity law aeroelastic model aircraft aerodynamic heating thermal effect high speed supersonic
+
+Top-10 original:   ['51', '184', '12', '359', '746', '486', '879', '878', '56', '13']
+Top-10 modificado: ['51', '12', '184', '746', '359', '486', '13', '29', '606', '31']
+
+Similaridade Jaccard (Top-10 original x modificado): 0.54  (7/10 documentos em comum)
+
+Documentos que ENTRARAM no Top-10 (só na versão modificada):
+  - 29 (Relevante)
+  - 606 (Nao relevante)
+  - 31 (Relevante)
+
+Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 879 (Relevante)
+  - 878 (Nao relevante)
+  - 56 (Relevante)
+
+Documentos que permaneceram, mas mudaram de posição:
+  - 184: posição 2 -> 3 (desceu)
+  - 12: posição 3 -> 2 (subiu)
+  - 359: posição 4 -> 5 (desceu)
+  - 746: posição 5 -> 4 (subiu)
+  - 13: posição 10 -> 7 (subiu)
+
+Resumo: 2 documento(s) relevante(s) entraram no Top-10 e 2 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+
+==============================================================================
+Consulta 1 | Modelo: BM25
+
+Texto original:   what similarity laws must be obeyed when constructing aeroelastic models of heated high speed aircraft .
+Texto modificado: similarity law aeroelastic model aircraft aerodynamic heating thermal effect high speed supersonic
+
+Top-10 original:   ['51', '486', '12', '184', '878', '573', '665', '746', '944', '141']
+Top-10 modificado: ['51', '486', '12', '184', '746', '29', '14', '95', '141', '606']
+
+Similaridade Jaccard (Top-10 original x modificado): 0.43  (6/10 documentos em comum)
+
+Documentos que ENTRARAM no Top-10 (só na versão modificada):
+  - 29 (Relevante)
+  - 14 (Relevante)
+  - 95 (Relevante)
+  - 606 (Nao relevante)
+
+Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 878 (Nao relevante)
+  - 573 (Nao relevante)
+  - 665 (Nao relevante)
+  - 944 (Nao relevante)
+
+Documentos que permaneceram, mas mudaram de posição:
+  - 746: posição 8 -> 5 (subiu)
+  - 141: posição 10 -> 9 (subiu)
+
+Resumo: 3 documento(s) relevante(s) entraram no Top-10 e 0 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+
+==============================================================================
+Consulta 2 | Modelo: Vetorial
+
+Texto original:   what are the structural and aeroelastic problems associated with flight of high speed aircraft .
+Texto modificado: structural aeroelastic problem flutter deformation instability high speed supersonic aircraft
+
+Top-10 original:   ['12', '51', '746', '1169', '884', '184', '100', '253', '429', '792']
+Top-10 modificado: ['12', '878', '51', '202', '746', '1111', '747', '391', '593', '781']
+
+Similaridade Jaccard (Top-10 original x modificado): 0.18  (3/10 documentos em comum)
+
+Documentos que ENTRARAM no Top-10 (só na versão modificada):
+  - 878 (Nao relevante)
+  - 202 (Relevante)
+  - 1111 (Nao relevante)
+  - 747 (Nao relevante)
+  - 391 (Relevante)
+  - 593 (Nao relevante)
+  - 781 (Nao relevante)
+
+Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 1169 (Nao relevante)
+  - 884 (Nao relevante)
+  - 184 (Relevante)
+  - 100 (Nao relevante)
+  - 253 (Nao relevante)
+  - 429 (Nao relevante)
+  - 792 (Nao relevante)
+
+Documentos que permaneceram, mas mudaram de posição:
+  - 51: posição 2 -> 3 (desceu)
+  - 746: posição 3 -> 5 (desceu)
+
+Resumo: 2 documento(s) relevante(s) entraram no Top-10 e 1 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+
+==============================================================================
+Consulta 2 | Modelo: BM25
+
+Texto original:   what are the structural and aeroelastic problems associated with flight of high speed aircraft .
+Texto modificado: structural aeroelastic problem flutter deformation instability high speed supersonic aircraft
+
+Top-10 original:   ['12', '746', '51', '1089', '100', '1169', '184', '141', '172', '810']
+Top-10 modificado: ['12', '658', '51', '747', '781', '746', '390', '284', '78', '14']
+
+Similaridade Jaccard (Top-10 original x modificado): 0.18  (3/10 documentos em comum)
+
+Documentos que ENTRARAM no Top-10 (só na versão modificada):
+  - 658 (Relevante)
+  - 747 (Nao relevante)
+  - 781 (Nao relevante)
+  - 390 (Relevante)
+  - 284 (Nao relevante)
+  - 78 (Nao relevante)
+  - 14 (Relevante)
+
+Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 1089 (Nao relevante)
+  - 100 (Nao relevante)
+  - 1169 (Nao relevante)
+  - 184 (Relevante)
+  - 141 (Nao relevante)
+  - 172 (Nao relevante)
+  - 810 (Nao relevante)
+
+Documentos que permaneceram, mas mudaram de posição:
+  - 746: posição 2 -> 6 (desceu)
+
+Resumo: 3 documento(s) relevante(s) entraram no Top-10 e 1 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+
+==============================================================================
+Consulta 3 | Modelo: Vetorial
+
+Texto original:   can a criterion be developed to show empirically the validity of flow solutions for chemically reacting gas mixtures based on the simplifying assumption of instantaneous local chemical equilibrium .
+Texto modificado: chemically reacting gas local chemical equilibrium
+
+Top-10 original:   ['166', '488', '410', '1061', '167', '1275', '1374', '185', '1189', '575']
+Top-10 modificado: ['166', '410', '488', '1189', '1374', '575', '1061', '1252', '167', '1010']
+
+Similaridade Jaccard (Top-10 original x modificado): 0.67  (8/10 documentos em comum)
+
+Documentos que ENTRARAM no Top-10 (só na versão modificada):
+  - 1252 (Nao relevante)
+  - 1010 (Nao relevante)
+
+Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 1275 (Nao relevante)
+  - 185 (Nao relevante)
+
+Documentos que permaneceram, mas mudaram de posição:
+  - 488: posição 2 -> 3 (desceu)
+  - 410: posição 3 -> 2 (subiu)
+  - 1061: posição 4 -> 7 (desceu)
+  - 167: posição 5 -> 9 (desceu)
+  - 1374: posição 7 -> 5 (subiu)
+  - 1189: posição 9 -> 4 (subiu)
+  - 575: posição 10 -> 6 (subiu)
+
+Resumo: 0 documento(s) relevante(s) entraram no Top-10 e 0 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+
+==============================================================================
+Consulta 3 | Modelo: BM25
+
+Texto original:   can a criterion be developed to show empirically the validity of flow solutions for chemically reacting gas mixtures based on the simplifying assumption of instantaneous local chemical equilibrium .
+Texto modificado: chemically reacting gas local chemical equilibrium
+
+Top-10 original:   ['166', '488', '1061', '1189', '1315', '167', '1374', '575', '185', '259']
+Top-10 modificado: ['488', '166', '1189', '1374', '1252', '574', '410', '575', '1296', '167']
+
+Similaridade Jaccard (Top-10 original x modificado): 0.43  (6/10 documentos em comum)
+
+Documentos que ENTRARAM no Top-10 (só na versão modificada):
+  - 1252 (Nao relevante)
+  - 574 (Nao relevante)
+  - 410 (Nao relevante)
+  - 1296 (Nao relevante)
+
+Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 1061 (Nao relevante)
+  - 1315 (Nao relevante)
+  - 185 (Nao relevante)
+  - 259 (Nao relevante)
+
+Documentos que permaneceram, mas mudaram de posição:
+  - 166: posição 1 -> 2 (desceu)
+  - 488: posição 2 -> 1 (subiu)
+  - 1189: posição 4 -> 3 (subiu)
+  - 167: posição 6 -> 10 (desceu)
+  - 1374: posição 7 -> 4 (subiu)
+
+Resumo: 0 documento(s) relevante(s) entraram no Top-10 e 0 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+
+==============================================================================
+Consulta 4 | Modelo: Vetorial
+
+Texto original:   what is the present state of the theory of quasi-conical flows .
+Texto modificado: quasi conical flow
+
+Top-10 original:   ['1275', '753', '428', '680', '224', '512', '232', '593', '380', '1053']
+Top-10 modificado: ['753', '1275', '428', '633', '224', '1058', '1070', '512', '19', '1059']
+
+Similaridade Jaccard (Top-10 original x modificado): 0.33  (5/10 documentos em comum)
+
+Documentos que ENTRARAM no Top-10 (só na versão modificada):
+  - 633 (Nao relevante)
+  - 1058 (Nao relevante)
+  - 1070 (Nao relevante)
+  - 19 (Nao relevante)
+  - 1059 (Nao relevante)
+
+Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 680 (Nao relevante)
+  - 232 (Nao relevante)
+  - 593 (Nao relevante)
+  - 380 (Nao relevante)
+  - 1053 (Nao relevante)
+
+Documentos que permaneceram, mas mudaram de posição:
+  - 1275: posição 1 -> 2 (desceu)
+  - 753: posição 2 -> 1 (subiu)
+  - 512: posição 6 -> 8 (desceu)
+
+Resumo: 0 documento(s) relevante(s) entraram no Top-10 e 0 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+
+==============================================================================
+Consulta 4 | Modelo: BM25
+
+Texto original:   what is the present state of the theory of quasi-conical flows .
+Texto modificado: quasi conical flow
+
+Top-10 original:   ['1275', '680', '1196', '428', '753', '224', '232', '1141', '1304', '593']
+Top-10 modificado: ['1275', '680', '428', '224', '753', '633', '380', '512', '236', '1141']
+
+Similaridade Jaccard (Top-10 original x modificado): 0.43  (6/10 documentos em comum)
+
+Documentos que ENTRARAM no Top-10 (só na versão modificada):
+  - 633 (Nao relevante)
+  - 380 (Nao relevante)
+  - 512 (Nao relevante)
+  - 236 (Relevante)
+
+Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 1196 (Nao relevante)
+  - 232 (Nao relevante)
+  - 1304 (Nao relevante)
+  - 593 (Nao relevante)
+
+Documentos que permaneceram, mas mudaram de posição:
+  - 428: posição 4 -> 3 (subiu)
+  - 224: posição 6 -> 4 (subiu)
+  - 1141: posição 8 -> 10 (desceu)
+
+Resumo: 1 documento(s) relevante(s) entraram no Top-10 e 0 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+
+==============================================================================
+Consulta 5 | Modelo: Vetorial
+
+Texto original:   has anyone developed an analysis which accurately establishes the large deflection behaviour of conical shells .
+Texto modificado: conical conical shells shells analysis
+
+Top-10 original:   ['930', '1070', '1058', '926', '1068', '1059', '1044', '898', '1361', '931']
+Top-10 modificado: ['1070', '930', '1059', '1058', '898', '890', '1044', '934', '935', '633']
+
+Similaridade Jaccard (Top-10 original x modificado): 0.43  (6/10 documentos em comum)
+
+Documentos que ENTRARAM no Top-10 (só na versão modificada):
+  - 890 (Nao relevante)
+  - 934 (Nao relevante)
+  - 935 (Nao relevante)
+  - 633 (Nao relevante)
+
+Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 926 (Nao relevante)
+  - 1068 (Nao relevante)
+  - 1361 (Nao relevante)
+  - 931 (Nao relevante)
+
+Documentos que permaneceram, mas mudaram de posição:
+  - 930: posição 1 -> 2 (desceu)
+  - 1070: posição 2 -> 1 (subiu)
+  - 1058: posição 3 -> 4 (desceu)
+  - 1059: posição 6 -> 3 (subiu)
+  - 898: posição 8 -> 5 (subiu)
+
+Resumo: 0 documento(s) relevante(s) entraram no Top-10 e 0 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+
+==============================================================================
+Consulta 5 | Modelo: BM25
+
+Texto original:   has anyone developed an analysis which accurately establishes the large deflection behaviour of conical shells .
+Texto modificado: conical conical shells shells analysis
+
+Top-10 original:   ['930', '1070', '1058', '926', '1068', '1053', '1059', '931', '1363', '1051']
+Top-10 modificado: ['1070', '1059', '1058', '930', '898', '935', '934', '937', '931', '938']
+
+Similaridade Jaccard (Top-10 original x modificado): 0.33  (5/10 documentos em comum)
+
+Documentos que ENTRARAM no Top-10 (só na versão modificada):
+  - 898 (Nao relevante)
+  - 935 (Nao relevante)
+  - 934 (Nao relevante)
+  - 937 (Nao relevante)
+  - 938 (Nao relevante)
+
+Documentos que SAÍRAM do Top-10 (só na versão original):
+  - 926 (Nao relevante)
+  - 1068 (Nao relevante)
+  - 1053 (Nao relevante)
+  - 1363 (Nao relevante)
+  - 1051 (Nao relevante)
+
+Documentos que permaneceram, mas mudaram de posição:
+  - 930: posição 1 -> 4 (desceu)
+  - 1070: posição 2 -> 1 (subiu)
+  - 1059: posição 7 -> 2 (subiu)
+  - 931: posição 8 -> 9 (desceu)
+
+Resumo: 0 documento(s) relevante(s) entraram no Top-10 e 0 documento(s) relevante(s) saíram do Top-10 com a modificação da consulta.
+
+==============================================================================
