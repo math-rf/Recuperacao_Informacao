@@ -1,0 +1,33 @@
+ANÁLISE DO RERANKING (ΔNDCG@10 = reranking - híbrido)
+
+==============================================================================
+GANHO (PLAIN-1320): ΔNDCG@10 = +0.5617
+Texto: Harvard Physicians’ Study II
+Principais documentos que mudaram de posição (doc_id, antes, depois):
+  MED-4929: 7 -> 2 (Δ=-5)
+  MED-761: 5 -> 9 (Δ=+4)
+
+==============================================================================
+GANHO (PLAIN-541): ΔNDCG@10 = +0.2972
+Texto: American Dental Association
+Principais documentos que mudaram de posição (doc_id, antes, depois):
+  MED-4019: 3 -> 9 (Δ=+6)
+  MED-4036: 1 -> 3 (Δ=+2)
+  MED-872: 4 -> 5 (Δ=+1)
+  MED-3618: 7 -> 8 (Δ=+1)
+
+==============================================================================
+POUCA/NENHUMA ALTERAÇÃO (PLAIN-1008): ΔNDCG@10 = +0.0000
+Texto: deafness
+Documentos que mudaram de posição:
+  MED-3863: 3 -> 10 (Δ=+7)
+
+==============================================================================
+PIORA (PLAIN-1679): ΔNDCG@10 = -0.3869
+Texto: myelopathy
+Principais documentos que mudaram de posição:
+  MED-1113: 2 -> 9 (Δ=+7)
+  MED-1107: 8 -> 3 (Δ=-5)
+  MED-1115: 10 -> 7 (Δ=-3)
+  MED-3193: 3 -> 4 (Δ=+1)
+  MED-3787: 4 -> 5 (Δ=+1)

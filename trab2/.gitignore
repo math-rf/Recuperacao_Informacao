@@ -1,0 +1,22 @@
+# .gitignore — arquivos regeneráveis e artefatos locais
+
+# Ambiente virtual
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Dataset (regenerável pelo script 01)
+data/
+*.zip
+
+# Índice e embeddings (regeneráveis pelos scripts 02/03)
+index/
+embeddings/
+
+# Notebooks intermediários / checkpoints
+.ipynb_checkpoints/
+
+# Segredos / chaves
+.env
+*.key
