@@ -1,0 +1,9 @@
+{
+  "num_docs": 3633,
+  "vocabulary_size": 18929,
+  "total_postings": 359991,
+  "total_tokens": 602157,
+  "avg_doc_len": 165.74649050371593,
+  "build_time_sec": 0.2738814000003913,
+  "spell_vocabulary_size": 26229
+}

@@ -1,0 +1,26 @@
+# ==============================================================
+#  SCC0282 - Recuperação de Informação - Trabalho Prático 2
+#  Dependências do projeto
+#
+#  IMPORTANTE: recomenda-se Python 3.10, 3.11 ou 3.12.
+#  O PyTorch/sentence-transformers ainda podem não ter wheels
+#  oficiais para Python 3.14 no momento desta escrita.
+# ==============================================================
+
+# --- Leitura/parse de dados e utilitários ---
+numpy>=1.24
+pandas>=2.0
+
+# --- Pré-processamento (tokenização, stopwords, stemming) ---
+nltk>=3.8
+
+# --- Busca semântica (bi-encoder) e reranking (cross-encoder) ---
+sentence-transformers>=2.5
+torch>=2.1
+
+# --- Interface com a LLM local (download do Qwen via HuggingFace) ---
+requests>=2.31
+
+# --- Progresso em loops longos e gráficos do relatório ---
+tqdm>=4.66
+matplotlib>=3.8

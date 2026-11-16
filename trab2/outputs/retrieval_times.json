@@ -1,0 +1,19 @@
+{
+  "index_build_sec": 0.2738814000003913,
+  "index_vocabulary_size": 18929,
+  "index_total_postings": 359991,
+  "bm25_avg_query_ms": 0.4029236476288856,
+  "semantic_embedding_sec": 116.198,
+  "semantic_avg_query_ms": 13.794445285920002,
+  "semantic_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "semantic_dim": 384,
+  "semantic_max_seq_length": 256,
+  "rerank_avg_query_ms": 4168.318591021674,
+  "rerank_model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+  "rrf_k": 10,
+  "rrf_k_dev_ndcg": {
+    "10": 0.33263553886352,
+    "60": 0.33035168382150915,
+    "100": 0.33093878947589384
+  }
+}
