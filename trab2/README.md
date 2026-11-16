@@ -65,7 +65,6 @@ tp2-ri/
 ├── index/                    # índice + vocabulário (gerado no passo 02)
 ├── embeddings/               # embeddings dos documentos (gerado no passo 03)
 ├── outputs/                  # CSVs de resultados + análises
-└── report/relatorio.tex      # relatório em LaTeX
 ```
 
 ---
@@ -170,8 +169,4 @@ Para rodar offline (tudo já cacheado), adicione `set HF_HUB_OFFLINE=1`.
   `Qwen/Qwen2.5-1.5B-Instruct`, baixado automaticamente na 1ª execução).
 - **NLTK não baixa recursos**: rode manualmente `nltk.download("stopwords")`.
 
----
 
-## 8. Relatório
-
-O relatório completo em LaTeX está em `report/relatorio.tex` (duas colunas, 9pt).
