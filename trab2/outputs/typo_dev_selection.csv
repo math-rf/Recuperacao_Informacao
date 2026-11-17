@@ -1,0 +1,17 @@
+variante,jaccard,consultas,casos_validos_recuperacao,recuperacao_media,taxa_correcao_exata
+Damerau + dicionário completo,0.2,212,152,0.9413,0.9009
+Damerau + dicionário completo,0.1,212,152,0.9413,0.9009
+Damerau + dicionário completo,0.3,212,152,0.915,0.8821
+Damerau + dicionário completo,0.4,212,152,0.858,0.8396
+Damerau + sem stopwords,0.2,212,152,0.9437,0.9151
+Damerau + sem stopwords,0.1,212,152,0.9437,0.9151
+Damerau + sem stopwords,0.3,212,152,0.9174,0.8962
+Damerau + sem stopwords,0.4,212,152,0.858,0.8396
+Levenshtein + dicionário completo,0.2,212,152,0.915,0.8726
+Levenshtein + dicionário completo,0.1,212,152,0.915,0.8726
+Levenshtein + dicionário completo,0.3,212,152,0.9084,0.8679
+Levenshtein + dicionário completo,0.4,212,152,0.8514,0.8349
+Levenshtein + sem stopwords,0.2,212,152,0.9174,0.8868
+Levenshtein + sem stopwords,0.1,212,152,0.9174,0.8868
+Levenshtein + sem stopwords,0.3,212,152,0.9108,0.8821
+Levenshtein + sem stopwords,0.4,212,152,0.8514,0.8349

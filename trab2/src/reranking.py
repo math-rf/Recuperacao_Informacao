@@ -1,7 +1,7 @@
 """
 reranking.py
 ============
-Reranking com cross-encoder (requisito 9 do enunciado).
+Reranking com cross-encoder.
 
 O sistema híbrido (RRF) é usado como recuperador inicial. Os 50 primeiros
 documentos do ranking híbrido são reordenados por um modelo mais preciso que
@@ -29,7 +29,7 @@ class Reranker:
 
         self.model_name = model_name or config.RERANK_MODEL
         self.model = CrossEncoder(self.model_name, max_length=512)
-        # Comprimento máximo de entrada (para o relatório).
+        # Comprimento máximo de entrada.
         self.max_length = getattr(self.model, "max_length", None) or 512
 
         self.total_query_time: float = 0.0

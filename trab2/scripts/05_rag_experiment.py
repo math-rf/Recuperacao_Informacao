@@ -1,7 +1,7 @@
 """
 05_rag_experiment.py
 ====================
-Experimento RAG: sem RAG (A) x com RAG (B) — requisitos 11, 12 e 13.
+Experimento RAG: sem RAG (A) x com RAG (B).
 
 Executa (requer ter rodado o passo 03, que gera results_reranking.csv):
 
@@ -9,7 +9,7 @@ Executa (requer ter rodado o passo 03, que gera results_reranking.csv):
 
 Procedimento:
   1. Seleciona as 10 consultas fixas do test (seed 42, entre as terminadas em
-     "?"). Confere se a lista bate com a do enunciado:
+     "?"). Confere a lista de consultas:
         PLAIN-68, PLAIN-2450, PLAIN-153, PLAIN-2850, PLAIN-2750,
         PLAIN-270, PLAIN-2470, PLAIN-2430, PLAIN-238, PLAIN-3342
   2. Para cada consulta, obtém o Top-5 após o reranking (contexto).
@@ -31,16 +31,16 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-import config  # noqa: E402
-from src.data_loader import load_all, get_query_ids_from_qrels  # noqa: E402
-from src.rag import (  # noqa: E402
+import config
+from src.data_loader import load_all, get_query_ids_from_qrels
+from src.rag import (
     TransformersLLM,
     build_context,
     build_prompt_no_rag,
     build_prompt_rag,
 )
 
-# Lista oficial do enunciado (para conferência).
+# Consultas esperadas para o sorteio com seed 42.
 EXPECTED_QUERIES = [
     "PLAIN-68", "PLAIN-2450", "PLAIN-153", "PLAIN-2850", "PLAIN-2750",
     "PLAIN-270", "PLAIN-2470", "PLAIN-2430", "PLAIN-238", "PLAIN-3342",
@@ -49,7 +49,7 @@ EXPECTED_QUERIES = [
 
 def select_rag_queries(test_ids, queries):
     """
-    Reproduz exatamente o sorteio do enunciado (seed 42) entre as consultas
+    Sorteio das consultas do RAG (seed 42) entre as consultas
     do test cujo texto termina em "?".
     """
     ids = [q for q in sorted(test_ids) if queries[q].strip().endswith("?")]
@@ -81,7 +81,7 @@ def main() -> None:
     print(f"      Consultas sorteadas (seed 42): {rag_queries}")
     assert rag_queries == EXPECTED_QUERIES, \
         f"Divergência na seleção: {rag_queries} != {EXPECTED_QUERIES}"
-    print("      Lista confere com o enunciado.")
+    print("      Lista confere com a esperada.")
 
     print("[2/5] Carregando ranking reranqueado (results_reranking.csv) ...")
     rerank_df = pd.read_csv(config.OUTPUT_DIR / "results_reranking.csv")
@@ -136,6 +136,22 @@ def main() -> None:
     print("[5/5] Salvando rag_experiment.csv ...")
     df = pd.DataFrame(rows)
     out = config.OUTPUT_DIR / "rag_experiment.csv"
+
+    # Preserva as notas humanas já dadas, somente quando a resposta é idêntica.
+    # Se o contexto ou a resposta mudaram, as notas antigas não valem e ficam vazias.
+    note_cols = ["fidelidade", "completude", "utilidade", "rastreabilidade",
+                 "just_fidelidade", "just_completude", "just_utilidade", "just_rastreabilidade"]
+    if out.exists():
+        old = pd.read_csv(out, dtype=str, keep_default_na=False)
+        old_map = {(r.query_id, r.condition, r.prompt, r.answer): r for r in old.itertuples()}
+        kept = 0
+        for i, row in df.iterrows():
+            key = (row["query_id"], row["condition"], row["prompt"], row["answer"])
+            if key in old_map:
+                for c in note_cols:
+                    df.at[i, c] = getattr(old_map[key], c)
+                kept += 1
+        print(f"      notas preservadas: {kept}/{len(df)} respostas idênticas à execução anterior")
     df.to_csv(out, index=False, encoding="utf-8")
     print(f"      -> {out}")
     print("\nPróximo passo: preencher manualmente as notas (fidelidade, "

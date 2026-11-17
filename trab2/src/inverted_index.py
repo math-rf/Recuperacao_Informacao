@@ -1,7 +1,7 @@
 """
 inverted_index.py
 =================
-Índice invertido implementado DO ZERO (requisito 2 do enunciado).
+Índice invertido construído do zero, com dicionários nativos do Python.
 
 Estruturas de dados utilizadas (apenas dicionários nativos do Python):
 
@@ -19,8 +19,8 @@ que são exatamente as informações necessárias ao BM25. NÃO é permitido
 percorrer toda a coleção a cada consulta; aqui a consulta acessa apenas as
 posting lists dos termos presentes na consulta.
 
-Também são registradas estatísticas pedidas no enunciado: nº de termos do
-vocabulário e nº total de postings.
+Também são registradas as estatísticas de construção: nº de termos do
+vocabulário, nº total de postings e tempo de construção.
 """
 
 from __future__ import annotations
@@ -37,18 +37,18 @@ class InvertedIndex:
         self.postings: Dict[str, Dict[str, int]] = {}
         # doc_id -> número de tokens
         self.doc_lengths: Dict[str, int] = {}
+        # Ordem de inserção dos documentos (usada para completar rankings com score 0).
+        self.doc_order: List[str] = []
         # termo -> document frequency
         self.doc_freq: Dict[str, int] = {}
         self.num_docs: int = 0
         self.total_tokens: int = 0
         self.avg_doc_len: float = 0.0
 
-        # Estatísticas de construção (para o relatório).
+        # Estatísticas de construção.
         self.build_time: float = 0.0
 
-    # ------------------------------------------------------------------
     # Construção
-    # ------------------------------------------------------------------
     def add_document(self, doc_id: str, tokens: List[str]) -> None:
         """
         Indexa um documento a partir da sua lista de tokens pré-processados.
@@ -60,6 +60,7 @@ class InvertedIndex:
         # Comprimento do documento (número de tokens).
         length = len(tokens)
         self.doc_lengths[doc_id] = length
+        self.doc_order.append(doc_id)
         self.total_tokens += length
         self.num_docs += 1
 
@@ -86,9 +87,7 @@ class InvertedIndex:
         self.build_time = time.perf_counter() - start
         return self
 
-    # ------------------------------------------------------------------
     # Consulta
-    # ------------------------------------------------------------------
     def get_postings(self, term: str) -> Dict[str, int]:
         """Devolve a posting list {doc_id: tf} de um termo (vazio se ausente)."""
         return self.postings.get(term, {})
@@ -101,9 +100,7 @@ class InvertedIndex:
         """Devolve o comprimento (nº de tokens) de um documento."""
         return self.doc_lengths.get(doc_id, 0)
 
-    # ------------------------------------------------------------------
     # Estatísticas
-    # ------------------------------------------------------------------
     @property
     def vocabulary_size(self) -> int:
         """Número de termos distintos no vocabulário."""
@@ -128,9 +125,7 @@ class InvertedIndex:
             "build_time_sec": self.build_time,
         }
 
-    # ------------------------------------------------------------------
-    # Persistência (opcional, via pickle — usa apenas estruturas nativas)
-    # ------------------------------------------------------------------
+    # Persistência em pickle
     def save(self, path) -> None:
         """Serializa o índice em disco usando pickle."""
         import pickle

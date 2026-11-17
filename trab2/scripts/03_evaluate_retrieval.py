@@ -27,20 +27,18 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-import config  # noqa: E402
-from src.data_loader import load_all, get_query_ids_from_qrels  # noqa: E402
-from src.evaluation import evaluate_query, evaluate_ranking, mean_metrics  # noqa: E402
-from src.hybrid_search import reciprocal_rank_fusion, tune_k  # noqa: E402
-from src.inverted_index import InvertedIndex  # noqa: E402
-from src.lexical_search import BM25  # noqa: E402
-from src.preprocessing import ensure_nltk_data, preprocess  # noqa: E402
-from src.reranking import Reranker  # noqa: E402
-from src.semantic_search import SemanticSearch  # noqa: E402
+import config
+from src.data_loader import load_all, get_query_ids_from_qrels
+from src.evaluation import evaluate_query, evaluate_ranking, mean_metrics
+from src.hybrid_search import reciprocal_rank_fusion, tune_k
+from src.inverted_index import InvertedIndex
+from src.lexical_search import BM25
+from src.preprocessing import ensure_nltk_data, preprocess
+from src.reranking import Reranker
+from src.semantic_search import SemanticSearch
 
 
-# ----------------------------------------------------------------------
 # Helpers de saída
-# ----------------------------------------------------------------------
 def save_ranking_csv(filename: str, rankings: dict, qrels: dict) -> None:
     """
     Salva um arquivo de ranking no formato padronizado:
@@ -75,9 +73,7 @@ def main() -> None:
     test_ids = get_query_ids_from_qrels(qrels_test)
     print(f"      dev: {len(dev_ids)} consultas | test: {len(test_ids)} consultas")
 
-    # ------------------------------------------------------------------
     # Índice invertido + BM25
-    # ------------------------------------------------------------------
     print("[2/6] Busca lexical (BM25) ...")
     index_path = config.INDEX_DIR / "inverted_index.pkl"
     if index_path.exists():
@@ -94,9 +90,7 @@ def main() -> None:
           f"construção {index.build_time:.3f}s, "
           f"consulta média {bm25.avg_query_time * 1000:.2f}ms")
 
-    # ------------------------------------------------------------------
     # Recuperação semântica (bi-encoder)
-    # ------------------------------------------------------------------
     print("[3/6] Recuperação semântica (bi-encoder) ...")
     sem = SemanticSearch(config.SEMANTIC_MODEL)
     if not sem.load_embeddings(config.EMBEDDINGS_DIR):
@@ -113,9 +107,7 @@ def main() -> None:
     sem_test = {qid: sem.search(queries[qid]) for qid in test_ids}
     print(f"      consulta média semântica {sem.avg_query_time * 1000:.2f}ms")
 
-    # ------------------------------------------------------------------
     # Busca híbrida (RRF) — ajuste de k no dev
-    # ------------------------------------------------------------------
     print("[4/6] Busca híbrida (RRF) — tuning de k no dev ...")
     best_k, k_results = tune_k(
         lex_dev, sem_dev, qrels_dev, config.RRF_K_CANDIDATES,
@@ -123,16 +115,13 @@ def main() -> None:
     )
     print(f"      NDCG@10 médio por k no dev: {k_results}")
     print(f"      Melhor k = {best_k}")
-    config.RRF_K = best_k
 
     hyb_test = {
         qid: reciprocal_rank_fusion([lex_test[qid], sem_test[qid]], k=best_k)
         for qid in test_ids
     }
 
-    # ------------------------------------------------------------------
     # Reranking (cross-encoder) no test
-    # ------------------------------------------------------------------
     print("[5/6] Reranking (cross-encoder) no test ...")
     reranker = Reranker(config.RERANK_MODEL)
     print(f"      modelo {config.RERANK_MODEL}, max_length={reranker.max_length}")
@@ -141,9 +130,7 @@ def main() -> None:
         rerank_test[qid] = reranker.rerank(queries[qid], hyb_test[qid], corpus)
     print(f"      reranking médio por consulta {reranker.avg_query_time * 1000:.2f}ms")
 
-    # ------------------------------------------------------------------
     # Avaliação
-    # ------------------------------------------------------------------
     print("[6/6] Avaliação (P@10, R@10, AP@10, NDCG@10) ...")
     systems = {
         "lexical": lex_test,
@@ -159,9 +146,7 @@ def main() -> None:
         print(f"      {name:10s}: P@10={mean['P']:.4f} R@10={mean['R']:.4f} "
               f"MAP@10={mean['AP']:.4f} NDCG@10={mean['NDCG']:.4f}")
 
-    # ------------------------------------------------------------------
-    # Salvando CSVs padronizados (requisito 15)
-    # ------------------------------------------------------------------
+    # Salvando rankings e métricas
     print("\nSalvando CSVs padronizados ...")
     save_ranking_csv("results_lexical.csv", lex_test, qrels_test)
     save_ranking_csv("results_semantic.csv", sem_test, qrels_test)
@@ -183,7 +168,7 @@ def main() -> None:
     pd.DataFrame(mrows).to_csv(config.OUTPUT_DIR / "metrics_per_query.csv", index=False)
     print(f"      -> {config.OUTPUT_DIR / 'metrics_per_query.csv'}")
 
-    # Tempos (para o relatório).
+    # Tempos de execução.
     times = {
         "index_build_sec": index.build_time,
         "index_vocabulary_size": index.vocabulary_size,

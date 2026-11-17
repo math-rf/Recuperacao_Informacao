@@ -43,6 +43,10 @@ Texto: cocaine
 ------------------------------------------------------------------------------
 Top-5 LEXICAL:
  1. MED-3044        score=17.4645 rel=1 *
+ 2. MED-10          score=0.0000 rel=0  
+ 3. MED-14          score=0.0000 rel=0  
+ 4. MED-118         score=0.0000 rel=0  
+ 5. MED-301         score=0.0000 rel=0  
 Top-5 SEMÂNTICO:
  1. MED-3044        score=0.4667 rel=1 *
  2. MED-3054        score=0.3844 rel=1 *
@@ -56,6 +60,10 @@ Texto: kohlrabi
 ------------------------------------------------------------------------------
 Top-5 LEXICAL:
  1. MED-4455        score=12.2683 rel=1 *
+ 2. MED-10          score=0.0000 rel=0  
+ 3. MED-14          score=0.0000 rel=0  
+ 4. MED-118         score=0.0000 rel=0  
+ 5. MED-301         score=0.0000 rel=0  
 Top-5 SEMÂNTICO:
  1. MED-3947        score=0.2202 rel=0  
  2. MED-4660        score=0.2173 rel=0  

@@ -1,0 +1,21 @@
+{
+  "bi_encoder": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_seq_length": 256,
+    "documents_total": 3633,
+    "documents_truncated": 2864,
+    "percent_truncated": 78.83,
+    "median_tokens": 357,
+    "max_tokens": 2377
+  },
+  "cross_encoder": {
+    "model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "max_length": 512,
+    "pairs_total": 16150,
+    "pairs_truncated": 1308,
+    "percent_truncated": 8.1,
+    "median_tokens": 349,
+    "max_tokens": 2389,
+    "source": "outputs/results_hybrid.csv, rank <= 50, consultas do test"
+  }
+}

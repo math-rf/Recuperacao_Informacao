@@ -1,7 +1,7 @@
 """
 semantic_search.py
 ==================
-Recuperação semântica por embeddings densos (requisito 5 do enunciado).
+Recuperação semântica por embeddings densos.
 
 Utiliza um modelo pré-treinado com arquitetura bi-encoder (Sentence
 Transformers). Os embeddings dos documentos são calculados previamente e
@@ -33,23 +33,21 @@ class SemanticSearch:
 
         self.model_name = model_name or config.SEMANTIC_MODEL
         self.model = SentenceTransformer(self.model_name)
-        # Dimensão dos embeddings (para o relatório).
+        # Dimensão dos embeddings.
         self.dim = self.model.get_sentence_embedding_dimension()
-        # Comprimento máximo de entrada do tokenizador (para o relatório).
+        # Comprimento máximo de entrada do tokenizador.
         self.max_seq_length = getattr(self.model, "max_seq_length", None) or \
             self.model.tokenizer.model_max_length
 
         self.doc_ids: List[str] = []
         self.doc_embeddings: np.ndarray | None = None
 
-        # Estatísticas de tempo (para o relatório).
+        # Estatísticas de tempo.
         self.embedding_time: float = 0.0
         self.total_query_time: float = 0.0
         self.num_queries: int = 0
 
-    # ------------------------------------------------------------------
     # Embeddings de documentos
-    # ------------------------------------------------------------------
     def encode_documents(self, docs: dict[str, str], batch_size: int = None) -> None:
         """
         Calcula e armazena os embeddings de todos os documentos.
@@ -72,9 +70,7 @@ class SemanticSearch:
         self.doc_embeddings = np.asarray(embeddings, dtype=np.float32)
         self.embedding_time = time.perf_counter() - start
 
-    # ------------------------------------------------------------------
     # Persistência (para não recalcular embeddings toda vez)
-    # ------------------------------------------------------------------
     def save_embeddings(self, embeddings_dir: Path) -> None:
         """Salva doc_ids (.json) e a matriz de embeddings (.npy)."""
         embeddings_dir.mkdir(parents=True, exist_ok=True)
@@ -87,7 +83,8 @@ class SemanticSearch:
         np.save(mat_file, self.doc_embeddings)
         with open(meta_file, "w", encoding="utf-8") as f:
             json.dump({"model": self.model_name, "dim": self.dim,
-                       "normalized": config.SEMANTIC_NORMALIZE}, f)
+                       "normalized": config.SEMANTIC_NORMALIZE,
+                       "embedding_time_sec": self.embedding_time}, f)
 
     def load_embeddings(self, embeddings_dir: Path) -> bool:
         """
@@ -102,11 +99,13 @@ class SemanticSearch:
         with open(ids_file, "r", encoding="utf-8") as f:
             self.doc_ids = json.load(f)
         self.doc_embeddings = np.load(mat_file)
+        meta_file = embeddings_dir / "meta.json"
+        if meta_file.exists():
+            with open(meta_file, "r", encoding="utf-8") as f:
+                self.embedding_time = json.load(f).get("embedding_time_sec", 0.0)
         return True
 
-    # ------------------------------------------------------------------
     # Consulta
-    # ------------------------------------------------------------------
     def search(self, query: str, top_k: int = None) -> List[Tuple[str, float]]:
         """
         Calcula a similaridade (cosseno) entre a consulta e todos os

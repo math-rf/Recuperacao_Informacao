@@ -1,13 +1,9 @@
 """
 analysis.py
 ===========
-Funções auxiliares para as análises por consulta e de falhas (requisitos 7,
-10 e 14 do enunciado). Estas funções não executam experimentos; apenas
-organizam resultados já calculados para a redação do relatório.
-
-  * requisito 7  : comparação lexical x semântico (diferença de NDCG@10)
-  * requisito 10 : análise do reranking (ganhos, estabilidade e pioras)
-  * requisito 14 : análise de falhas ponta a ponta
+Funções para organizar as análises por consulta: comparação lexical x
+semântico, efeito do reranking e documentos que mudam de posição. Não executam
+experimentos; apenas leem resultados já calculados.
 """
 
 from __future__ import annotations
@@ -15,9 +11,7 @@ from __future__ import annotations
 from typing import Dict, List, Tuple
 
 
-# ----------------------------------------------------------------------
-# Requisito 7 — comparação lexical x semântico
-# ----------------------------------------------------------------------
+# Comparação lexical x semântico
 def ndcg_difference(
     metrics_a: Dict[str, Dict[str, float]],
     metrics_b: Dict[str, Dict[str, float]],
@@ -53,7 +47,7 @@ def format_top_k(
     top_k: int = 5,
 ) -> str:
     """
-    Formata o Top-k de um método para o relatório, marcando relevância.
+    Formata o Top-k de um método, marcando os documentos relevantes.
     Retorna uma string multilinha pronta para exibição/tabela.
     """
     lines = []
@@ -64,15 +58,13 @@ def format_top_k(
     return "\n".join(lines)
 
 
-# ----------------------------------------------------------------------
-# Requisito 10 — análise do reranking
-# ----------------------------------------------------------------------
+# Análise do reranking
 def rerank_analysis(
     hybrid_ndcg: Dict[str, float],
     reranked_ndcg: Dict[str, float],
 ) -> Dict[str, List[Tuple[str, float]]]:
     """
-    Identifica os casos pedidos no requisito 10:
+    Identifica os casos de análise do reranking:
       * "gains"   : dois maiores ganhos de NDCG@10 após o reranking
       * "stable"  : caso de pouca/nula alteração (|Δ| mínimo)
       * "losses"  : caso em que o reranking PIOROU o NDCG@10 (maior queda)
@@ -92,9 +84,7 @@ def rerank_analysis(
     return {"gains": gains, "stable": stable, "losses": losses}
 
 
-# ----------------------------------------------------------------------
-# Requisito 14 — análise de falhas ponta a ponta
-# ----------------------------------------------------------------------
+# Análise de falhas ponta a ponta
 def moved_documents(
     ranking_a: List[str], ranking_b: List[str], n: int = 10
 ) -> List[Tuple[str, int, int]]:

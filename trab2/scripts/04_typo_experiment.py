@@ -1,27 +1,21 @@
 """
 04_typo_experiment.py
 =====================
-Experimento de tolerância a erros (requisito 4 do enunciado).
+Experimento de tolerância a erros.
 
-Executa:
+1) Seleção no DEV: varre as combinações de distância (Levenshtein x Damerau-OSA),
+   dicionário (com/sem stopwords) e limiar de Jaccard. Critério: maior
+   recuperação média (NDCG@10) no dev. Em caso de empate, vence a primeira
+   configuração da grade (Damerau + dicionário completo, Jaccard 0,2).
+2) Aplicação no TEST: 10 consultas com NDCG@10 original > 0 (as 10 primeiras
+   por ID), um erro por consulta (inserção, remoção, substituição ou
+   transposição), corrigidas com a configuração escolhida no dev.
 
-    python scripts/04_typo_experiment.py
+Para cada caso são medidos a recuperação (fórmula do enunciado, NDCG@10) e o
+acerto exato (o termo corrigido é igual ao termo original).
 
-Procedimento:
-  1. Constrói o corretor (k-gramas + Jaccard + distância de edição) usando o
-     vocabulário da coleção ANTES do stemming (vocab salvo no passo 02).
-  2. Seleciona 10 consultas do test com NDCG@10 (original) > 0.
-  3. Para cada consulta, introduz um erro de um tipo (inserção, remoção,
-     substituição ou troca de ordem), garantindo que o termo com erro NÃO
-     exista no dicionário (exigência (ii)).
-  4. Compara NDCG@10 em três condições: original, com erro e corrigida.
-  5. Calcula a recuperação:
-         (NDCG_corrigida - NDCG_erro) / (NDCG_original - NDCG_erro)
-     quando o denominador for > 0; senão registra que o erro não reduziu o
-     desempenho.
-
-Arquivo gerado:
-    outputs/typo_experiment.csv
+Saídas: outputs/typo_dev_selection.csv, outputs/typo_experiment.csv,
+        outputs/typo_summary.json
 """
 
 import json
@@ -33,209 +27,219 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-import config  # noqa: E402
-from src.data_loader import load_all, get_query_ids_from_qrels  # noqa: E402
-from src.evaluation import evaluate_query  # noqa: E402
-from src.inverted_index import InvertedIndex  # noqa: E402
-from src.lexical_search import BM25  # noqa: E402
-from src.preprocessing import ensure_nltk_data, preprocess  # noqa: E402
-from src.spell_correction import SpellCorrector, introduce_typo  # noqa: E402
+import config
+from src.data_loader import load_all, get_query_ids_from_qrels
+from src.evaluation import evaluate_query
+from src.inverted_index import InvertedIndex
+from src.lexical_search import BM25
+from src.preprocessing import ensure_nltk_data, preprocess
+from src.spell_correction import (
+    SpellCorrector, damerau_levenshtein, introduce_typo, levenshtein,
+)
 
-
-# Configuração usada para a tokenização de "superfície" (sem stemming/stopwords).
 SURFACE_CFG = {
     "lowercase": True,
     "remove_punctuation": True,
     "remove_digits": False,
     "remove_stopwords": False,
     "stem": False,
-    "lemmatize": False,
 }
 
-# Tipos de erro distribuídos pelas 10 consultas (cobrindo os 4 tipos).
 TYPO_TYPES = ["insertion", "deletion", "substitution", "transposition",
               "insertion", "deletion", "substitution", "transposition",
               "insertion", "deletion"]
 
+# Primeiro valor = padrão do config (0,2). Em empate, vence o primeiro da grade.
+JACCARD_GRID = [0.2, 0.1, 0.3, 0.4]
+
 
 def surface_tokens(text: str) -> list:
-    """Tokenização de superfície (minúsculas, sem pontuação, sem stemming)."""
     return preprocess(text, cfg=SURFACE_CFG)
 
 
-def pick_typo_token(tokens: list, vocabulary: set, frequencies: dict,
-                    stopwords: set) -> int | None:
-    """
-    Escolhe o índice de um token adequado para receber o erro.
-
-    Estratégia: prefere termos LONGOS (>= 6) e mais RAROS (menor DF), pois são
-    mais distintivos — o erro derruba mais o ranking — e menos ambíguos — a
-    correção recupera com mais facilidade. Retorna o índice ou None.
-    """
-    candidates = [
-        (frequencies.get(tok, 0), i)
-        for i, tok in enumerate(tokens)
-        if len(tok) >= 6 and tok in vocabulary and tok not in stopwords
-    ]
-    if candidates:
-        candidates.sort()  # menor DF (mais raro) primeiro
-        return candidates[0][1]
-
-    # Fallback 1: qualquer token do vocabulário com tamanho >= 4.
-    for i, tok in enumerate(tokens):
-        if len(tok) >= 4 and tok in vocabulary and tok not in stopwords:
+def pick_typo_token(tokens, vocabulary, frequencies, stopwords):
+    """Token para receber o erro: termo longo, de baixa DF, não stopword."""
+    cands = [(frequencies.get(t, 0), i) for i, t in enumerate(tokens)
+             if len(t) >= 6 and t in vocabulary and t not in stopwords]
+    if cands:
+        return sorted(cands)[0][1]
+    for i, t in enumerate(tokens):
+        if len(t) >= 4 and t in vocabulary and t not in stopwords:
             return i
-
-    # Fallback 2: qualquer token do vocabulário com tamanho >= 3 (siglas curtas).
-    for i, tok in enumerate(tokens):
-        if len(tok) >= 3 and tok in vocabulary:
+    for i, t in enumerate(tokens):
+        if len(t) >= 3 and t in vocabulary:
             return i
     return None
 
 
-def make_unknown_typo(token: str, typo_type: str, vocabulary: set,
-                      rng: random.Random) -> str:
-    """
-    Gera um erro em `token` do tipo `typo_type`, garantindo que o resultado
-    NÃO esteja no vocabulário (exigência (ii)). Tenta até 20 posições.
-    """
+def make_unknown_typo(token, typo_type, vocabulary, rng):
+    """Erro do tipo pedido que produz um termo inexistente no vocabulário."""
     for _ in range(20):
         typo = introduce_typo(token, typo_type, rng)
         if typo != token and typo not in vocabulary:
             return typo
-    # Último recurso: substituição simples forçando caractere diferente.
+    # Fallback: substitui o último caractere. Não garante o tipo pedido; a
+    # coluna tipo_erro registra o tipo solicitado, não o efetivamente gerado.
     for ch in "xqz":
         typo = token[:-1] + ch
         if typo not in vocabulary:
             return typo
-    return token + "x"  # extremamente improvável estar no vocabulário
+    return token + "x"
 
 
-def main() -> None:
-    ensure_nltk_data()
-    config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    rng = random.Random(42)  # reprodutibilidade
+def ndcg_for(text, bm25, qrels_q):
+    ranked = bm25.search(preprocess(text))
+    return evaluate_query([d for d, _ in ranked], qrels_q, 10)["NDCG"]
 
-    print("[1/5] Carregando dados e índice ...")
-    corpus, queries, qrels_dev, qrels_test = load_all(
-        config.CORPUS_FILE, config.QUERIES_FILE,
-        config.QRELS_DEV_FILE, config.QRELS_TEST_FILE,
-    )
-    test_ids = get_query_ids_from_qrels(qrels_test)
-    index = InvertedIndex.load(config.INDEX_DIR / "inverted_index.pkl")
-    bm25 = BM25(index)
 
-    print("[2/5] Carregando vocabulário (antes do stemming) e construindo corretor ...")
-    with open(config.INDEX_DIR / "spell_vocabulary.json", "r", encoding="utf-8") as f:
-        vocab_freq = json.load(f)  # {termo: document_frequency}
-    vocabulary = set(vocab_freq.keys())
+def recovery(orig, err, corr):
+    denom = orig - err
+    if denom <= 0:
+        return None
+    return (corr - err) / denom
+
+
+def run_condition(query_ids, queries, qrels, bm25, vocab, freq, stopwords,
+                  distance, dict_terms, jaccard, seed, limit=10):
+    """
+    Executa o experimento para um conjunto de consultas e uma configuração.
+
+    `vocab` é o vocabulário completo da coleção (garante que o erro gere termo
+    inexistente). `dict_terms` é o dicionário do corretor, que depende da
+    variante. Os erros não dependem da configuração (o corretor não usa o RNG),
+    então são idênticos em todas as variantes.
+    """
+    rng = random.Random(seed)
     corrector = SpellCorrector(
         ngram_size=config.SPELL["kgram_size"],
-        jaccard_threshold=config.SPELL["jaccard_threshold"],
+        jaccard_threshold=jaccard,
         max_candidates=config.SPELL["max_candidates"],
         max_edit_distance=config.SPELL["max_edit_distance"],
+        distance=distance,
     )
-    corrector.build_dictionary(vocabulary, frequencies=vocab_freq)
+    corrector.build_dictionary(dict_terms, frequencies=freq)
 
-    from nltk.corpus import stopwords
-    stopwords_set = set(stopwords.words("english"))
+    ndcg_orig = {q: ndcg_for(queries[q], bm25, qrels[q]) for q in query_ids}
+    selected = sorted(q for q in query_ids if ndcg_orig[q] > 0)
+    if limit is not None:
+        selected = selected[:limit]
 
-    print("[3/5] Calculando NDCG@10 original das consultas do test ...")
-    ndcg_original = {}
-    for qid in test_ids:
-        ranked = bm25.search(preprocess(queries[qid]))
-        doc_ids = [d for d, _ in ranked]
-        ndcg_original[qid] = evaluate_query(doc_ids, qrels_test[qid], 10)["NDCG"]
-
-    # Seleciona 10 consultas com NDCG@10 > 0 (exigência (iii)), determinístico.
-    candidates = sorted(qid for qid in test_ids if ndcg_original[qid] > 0)
-    selected = candidates[:10]
-    print(f"      {len(candidates)} consultas com NDCG>0; 10 selecionadas: {selected}")
-
-    print("[4/5] Introduzindo erros e corrigindo ...")
     rows = []
     for idx, qid in enumerate(selected):
         typo_type = TYPO_TYPES[idx % len(TYPO_TYPES)]
         q_text = queries[qid]
         tokens = surface_tokens(q_text)
-        ti = pick_typo_token(tokens, vocabulary, vocab_freq, stopwords_set)
-
+        ti = pick_typo_token(tokens, vocab, freq, stopwords)
         if ti is None:
-            # Não há termo adequado; registra e pula (não deve ocorrer na prática).
-            rows.append({"query_id": qid, "query_original": q_text,
-                         "query_erro": "", "query_corrigida": "",
-                         "tipo_erro": typo_type, "NDCG10_original": ndcg_original[qid],
-                         "NDCG10_erro": None, "NDCG10_corrigida": None,
-                         "recuperacao": None, "observacao": "sem termo p/ erro"})
             continue
-
         original_term = tokens[ti]
-        typo_term = make_unknown_typo(original_term, typo_type, vocabulary, rng)
-
-        # Monta as três versões (em superfície, unidas por espaço).
+        typo_term = make_unknown_typo(original_term, typo_type, vocab, rng)
         typo_tokens = tokens[:]
         typo_tokens[ti] = typo_term
-
-        # Corrige APENAS o termo com erro (os demais já são conhecidos e não
-        # devem ser alterados). Isso evita, por exemplo, que uma stopword seja
-        # "corrigida" indevidamente.
         corrected_tokens = typo_tokens[:]
-        corrected = corrector.correct(typo_term)
-        if corrected is not None:
-            corrected_tokens[ti] = corrected
+        corr = corrector.correct(typo_term)
+        if corr is not None:
+            corrected_tokens[ti] = corr
 
-        query_erro = " ".join(typo_tokens)
-        query_corrigida = " ".join(corrected_tokens)
-
-        # NDCG@10 das três condições (aplicando o pré-processamento com stemming).
-        def ndcg(text):
-            ranked = bm25.search(preprocess(text))
-            return evaluate_query([d for d, _ in ranked], qrels_test[qid], 10)["NDCG"]
-
-        ndcg_orig = ndcg_original[qid]
-        ndcg_err = ndcg(query_erro)
-        ndcg_corr = ndcg(query_corrigida)
-
-        # Recuperação (exigência (iv)).
-        denom = ndcg_orig - ndcg_err
-        if denom > 0:
-            recuperacao = (ndcg_corr - ndcg_err) / denom
-            obs = ""
-        else:
-            recuperacao = None
-            obs = "erro não reduziu o desempenho"
-
+        q_err = " ".join(typo_tokens)
+        q_cor = " ".join(corrected_tokens)
+        n_o = ndcg_orig[qid]
+        n_e = ndcg_for(q_err, bm25, qrels[qid])
+        n_c = ndcg_for(q_cor, bm25, qrels[qid])
+        rec = recovery(n_o, n_e, n_c)
         rows.append({
             "query_id": qid,
             "query_original": q_text,
-            "query_erro": query_erro,
-            "query_corrigida": query_corrigida,
+            "query_erro": q_err,
+            "query_corrigida": q_cor,
             "tipo_erro": typo_type,
             "termo_alterado": original_term,
             "termo_com_erro": typo_term,
-            "NDCG10_original": ndcg_orig,
-            "NDCG10_erro": ndcg_err,
-            "NDCG10_corrigida": ndcg_corr,
-            "recuperacao": recuperacao,
-            "observacao": obs,
+            "termo_corrigido": corr if corr is not None else "",
+            "correcao_exata": int(corr == original_term),
+            "NDCG10_original": n_o,
+            "NDCG10_erro": n_e,
+            "NDCG10_corrigida": n_c,
+            "recuperacao": rec,
+            "observacao": "" if rec is not None else "erro não reduziu o desempenho",
         })
+    return rows
 
-    print("[5/5] Salvando typo_experiment.csv ...")
-    df = pd.DataFrame(rows)
-    out = config.OUTPUT_DIR / "typo_experiment.csv"
-    df.to_csv(out, index=False)
-    print(f"      -> {out}")
 
-    # Resumo rápido no console.
-    def _fmt(x):
-        return "n/a" if x is None else f"{x:.4f}"
+def summarize(rows):
+    """Médias de uma configuração. A recuperação média usa só os casos válidos."""
+    vals = [r["recuperacao"] for r in rows if r["recuperacao"] is not None]
+    exact = [r["correcao_exata"] for r in rows]
+    return {
+        "consultas": len(rows),
+        "casos_validos_recuperacao": len(vals),
+        "recuperacao_media": sum(vals) / len(vals) if vals else 0.0,
+        "taxa_correcao_exata": sum(exact) / len(exact) if exact else 0.0,
+    }
 
-    print("\n--- Resumo (NDCG@10) ---")
-    for r in rows:
-        rec = "n/a" if r["recuperacao"] is None else f"{r['recuperacao']:.3f}"
-        print(f"  {r['query_id']:12s} {r['tipo_erro']:14s} "
-              f"orig={_fmt(r['NDCG10_original'])} erro={_fmt(r['NDCG10_erro'])} "
-              f"corr={_fmt(r['NDCG10_corrigida'])} recuperação={rec}")
+
+def main() -> None:
+    ensure_nltk_data()
+    config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    corpus, queries, qrels_dev, qrels_test = load_all(
+        config.CORPUS_FILE, config.QUERIES_FILE,
+        config.QRELS_DEV_FILE, config.QRELS_TEST_FILE,
+    )
+    dev_ids = get_query_ids_from_qrels(qrels_dev)
+    test_ids = get_query_ids_from_qrels(qrels_test)
+
+    index = InvertedIndex.load(config.INDEX_DIR / "inverted_index.pkl")
+    bm25 = BM25(index)
+
+    with open(config.INDEX_DIR / "spell_vocabulary.json", encoding="utf-8") as f:
+        freq_all = json.load(f)
+    from nltk.corpus import stopwords as sw
+    stop = set(sw.words("english"))
+    freq_nostop = {t: f for t, f in freq_all.items() if t not in stop}
+    vocab_all = set(freq_all)
+
+    # Ordem da grade: a configuração padrão vem primeiro (desempate).
+    variants = {
+        "Damerau + dicionário completo": (damerau_levenshtein, freq_all),
+        "Damerau + sem stopwords": (damerau_levenshtein, freq_nostop),
+        "Levenshtein + dicionário completo": (levenshtein, freq_all),
+        "Levenshtein + sem stopwords": (levenshtein, freq_nostop),
+    }
+
+    # 1) Seleção no DEV: variante x limiar de Jaccard.
+    sel_rows, scores = [], {}
+    for name, (dist, freq) in variants.items():
+        for jac in JACCARD_GRID:
+            rows = run_condition(dev_ids, queries, qrels_dev, bm25, vocab_all,
+                                 freq, stop, dist, set(freq), jac, seed=42, limit=None)
+            s = summarize(rows)
+            scores[(name, jac)] = s["recuperacao_media"]
+            sel_rows.append({"variante": name, "jaccard": jac, **s,
+                             "recuperacao_media": round(s["recuperacao_media"], 4),
+                             "taxa_correcao_exata": round(s["taxa_correcao_exata"], 4)})
+            print(f"[dev] {name} | Jaccard={jac}: recuperação média = "
+                  f"{s['recuperacao_media']:.4f}, acerto exato = {s['taxa_correcao_exata']:.2f}")
+
+    pd.DataFrame(sel_rows).to_csv(config.OUTPUT_DIR / "typo_dev_selection.csv", index=False)
+    best_name, best_jac = max(scores, key=scores.get)  # max devolve o primeiro empatado
+    print(f"[dev] configuração escolhida: {best_name}, Jaccard={best_jac}")
+
+    # 2) Aplicação no TEST
+    dist, freq = variants[best_name]
+    rows = run_condition(test_ids, queries, qrels_test, bm25, vocab_all,
+                         freq, stop, dist, set(freq), best_jac, seed=42, limit=10)
+    pd.DataFrame(rows).to_csv(config.OUTPUT_DIR / "typo_experiment.csv", index=False)
+
+    summary = {
+        "dev_configuracao_escolhida": {"variante": best_name, "jaccard": best_jac},
+        "test": summarize(rows),
+        "test_consultas_com_erro": [r["query_id"] for r in rows],
+    }
+    with open(config.OUTPUT_DIR / "typo_summary.json", "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+    print(f"[test] {summary['test']}")
+    print("-> outputs/typo_experiment.csv, typo_dev_selection.csv, typo_summary.json")
 
 
 if __name__ == "__main__":

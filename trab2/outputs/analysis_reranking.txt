@@ -20,14 +20,13 @@ Principais documentos que mudaram de posição (doc_id, antes, depois):
 POUCA/NENHUMA ALTERAÇÃO (PLAIN-1008): ΔNDCG@10 = +0.0000
 Texto: deafness
 Documentos que mudaram de posição:
-  MED-3863: 3 -> 10 (Δ=+7)
+  MED-901: 2 -> 8 (Δ=+6)
+  MED-4694: 9 -> 4 (Δ=-5)
+  MED-3863: 5 -> 7 (Δ=+2)
 
 ==============================================================================
-PIORA (PLAIN-1679): ΔNDCG@10 = -0.3869
-Texto: myelopathy
+PIORA (PLAIN-3302): ΔNDCG@10 = -0.2942
+Texto: Fish Fog
 Principais documentos que mudaram de posição:
-  MED-1113: 2 -> 9 (Δ=+7)
-  MED-1107: 8 -> 3 (Δ=-5)
-  MED-1115: 10 -> 7 (Δ=-3)
-  MED-3193: 3 -> 4 (Δ=+1)
-  MED-3787: 4 -> 5 (Δ=+1)
+  MED-1572: 4 -> 6 (Δ=+2)
+  MED-4811: 3 -> 2 (Δ=-1)

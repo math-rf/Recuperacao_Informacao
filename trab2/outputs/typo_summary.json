@@ -1,0 +1,24 @@
+{
+  "dev_configuracao_escolhida": {
+    "variante": "Damerau + sem stopwords",
+    "jaccard": 0.2
+  },
+  "test": {
+    "consultas": 10,
+    "casos_validos_recuperacao": 7,
+    "recuperacao_media": 0.8571428571428571,
+    "taxa_correcao_exata": 0.9
+  },
+  "test_consultas_com_erro": [
+    "PLAIN-1018",
+    "PLAIN-102",
+    "PLAIN-1039",
+    "PLAIN-1088",
+    "PLAIN-1109",
+    "PLAIN-112",
+    "PLAIN-1130",
+    "PLAIN-1141",
+    "PLAIN-1151",
+    "PLAIN-1172"
+  ]
+}

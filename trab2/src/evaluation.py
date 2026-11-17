@@ -1,7 +1,7 @@
 """
 evaluation.py
 =============
-Métricas de avaliação da recuperação (requisito 6 do enunciado).
+Métricas de avaliação da recuperação.
 
 Métricas implementadas (corte k = 10 por padrão):
   * Precision@10 : #relevantes_no_top10 / 10
@@ -28,12 +28,7 @@ from typing import Dict, List, Tuple, Union
 
 
 def _to_doc_ids(ranked: List[Union[str, Tuple[str, float]]]) -> List[str]:
-    """
-    Normaliza uma lista de doc_ids (str) OU de pares (doc_id, score) para uma
-    lista apenas de doc_ids (str). Isso evita que, ao passar rankings no formato
-    [(doc_id, score)], a tupla seja comparada contra o doc_id (string) nas
-    métricas — um erro que zeraria todas as métricas silenciosamente.
-    """
+    """Aceita doc_ids (str) ou pares (doc_id, score) e devolve só os doc_ids."""
     return [item[0] if isinstance(item, (tuple, list)) else item for item in ranked]
 
 
@@ -75,7 +70,7 @@ def average_precision_at_k(
     AP@k = ( Σ_{i=1..k, d_i relevante} Precision@i ) / total_relevantes.
 
     O denominador é o total de relevantes da consulta nos qrels (convenção do
-    trec_eval), e NÃO o mínimo entre k e esse total.
+    trec_eval), não o mínimo entre k e esse total.
     """
     total = _total_relevant(qrels)
     if total == 0:

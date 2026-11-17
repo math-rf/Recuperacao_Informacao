@@ -1,11 +1,11 @@
-query_id,query_original,query_erro,query_corrigida,tipo_erro,termo_alterado,termo_com_erro,NDCG10_original,NDCG10_erro,NDCG10_corrigida,recuperacao,observacao
-PLAIN-1018,DHA,dhaa,dha,insertion,dha,dhaa,0.521098444712307,0.0,0.521098444712307,1.0,
-PLAIN-102,Stopping Heart Disease in Childhood,sopping heart disease in childhood,stopping heart disease in childhood,deletion,stopping,sopping,0.12530682344457728,0.20436662668128655,0.12530682344457728,,erro não reduziu o desempenho
-PLAIN-1039,domoic acid,yomoic acid,domoic acid,substitution,domoic,yomoic,1.0,0.0,1.0,1.0,
-PLAIN-1088,ECMO,cemo,chemo,transposition,ecmo,cemo,0.5531464700081437,0.0,0.0,0.0,
-PLAIN-1109,endocrine disruptors,endocrine disrruptors,endocrine disruptors,insertion,disruptors,disrruptors,0.4690000933206748,0.6683063269107928,0.4690000933206748,,erro não reduziu o desempenho
-PLAIN-112,Food Dyes and ADHD,fod dyes and adhd,food dyes and adhd,deletion,food,fod,0.40271448368754525,0.3817524471534168,0.40271448368754525,1.0,
-PLAIN-1130,ergothioneine,ergothioneide,ergothioneine,substitution,ergothioneine,ergothioneide,1.0,0.0,1.0,1.0,
-PLAIN-1141,Evidence-based medicine,evidence based mediicne,evidence based medicine,transposition,medicine,mediicne,0.22009176629808017,0.09478836436955078,0.22009176629808017,1.0,
-PLAIN-1151,factory farming practices,facttory farming practices,factory farming practices,insertion,factory,facttory,0.5829393865084944,0.5829393865084944,0.5829393865084944,,erro não reduziu o desempenho
-PLAIN-1172,fenugreek,enugreek,fenugreek,deletion,fenugreek,enugreek,0.22009176629808017,0.0,0.22009176629808017,1.0,
+query_id,query_original,query_erro,query_corrigida,tipo_erro,termo_alterado,termo_com_erro,termo_corrigido,correcao_exata,NDCG10_original,NDCG10_erro,NDCG10_corrigida,recuperacao,observacao
+PLAIN-1018,DHA,dhaa,dha,insertion,dha,dhaa,dha,1,0.521098444712307,0.0,0.521098444712307,1.0,
+PLAIN-102,Stopping Heart Disease in Childhood,sopping heart disease in childhood,stopping heart disease in childhood,deletion,stopping,sopping,stopping,1,0.12530682344457728,0.20436662668128655,0.12530682344457728,,erro não reduziu o desempenho
+PLAIN-1039,domoic acid,yomoic acid,domoic acid,substitution,domoic,yomoic,domoic,1,1.0,0.0,1.0,1.0,
+PLAIN-1088,ECMO,cemo,chemo,transposition,ecmo,cemo,chemo,0,0.5531464700081437,0.0,0.0,0.0,
+PLAIN-1109,endocrine disruptors,endocrine disrruptors,endocrine disruptors,insertion,disruptors,disrruptors,disruptors,1,0.4690000933206748,0.6683063269107928,0.4690000933206748,,erro não reduziu o desempenho
+PLAIN-112,Food Dyes and ADHD,fod dyes and adhd,food dyes and adhd,deletion,food,fod,food,1,0.40271448368754525,0.3817524471534168,0.40271448368754525,1.0,
+PLAIN-1130,ergothioneine,ergothioneide,ergothioneine,substitution,ergothioneine,ergothioneide,ergothioneine,1,1.0,0.0,1.0,1.0,
+PLAIN-1141,Evidence-based medicine,evidence based mediicne,evidence based medicine,transposition,medicine,mediicne,medicine,1,0.22009176629808017,0.09478836436955078,0.22009176629808017,1.0,
+PLAIN-1151,factory farming practices,facttory farming practices,factory farming practices,insertion,factory,facttory,factory,1,0.5829393865084944,0.5829393865084944,0.5829393865084944,,erro não reduziu o desempenho
+PLAIN-1172,fenugreek,enugreek,fenugreek,deletion,fenugreek,enugreek,fenugreek,1,0.22009176629808017,0.0,0.22009176629808017,1.0,

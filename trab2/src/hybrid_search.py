@@ -1,7 +1,7 @@
 """
 hybrid_search.py
 ================
-Busca híbrida por Reciprocal Rank Fusion (RRF) — requisito 8 do enunciado.
+Busca híbrida por Reciprocal Rank Fusion (RRF).
 
 RRF combina os rankings de dois ou mais sistemas sem comparar diretamente
 scores de escalas diferentes. O score de um documento d é:

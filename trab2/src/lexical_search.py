@@ -1,26 +1,15 @@
 """
 lexical_search.py
 =================
-Busca lexical com BM25 (requisito 3 do enunciado).
+Busca lexical com BM25 sobre o índice invertido.
 
-Implementação do BM25 (Okapi BM25) SOBRE o índice invertido construído do
-zero. A pontuação de um documento d para uma consulta q é:
+    score(q, d) = Σ_{t ∈ q} IDF(t) · tf(t,d)·(k1+1) / (tf(t,d) + k1·(1 - b + b·|d|/avgdl))
+    IDF(t)      = ln((N - df(t) + 0,5) / (df(t) + 0,5) + 1)
 
-    score(d, q) = Σ_{t ∈ q} IDF(t) * [ tf(t,d) * (k1 + 1) ] /
-                                      [ tf(t,d) + k1 * (1 - b + b * |d|/avgdl) ]
-
-    IDF(t) = ln( (N - df(t) + 0.5) / (df(t) + 0.5) + 1 )
-
-onde:
-    tf(t,d) : frequência bruta do termo t no documento d
-    df(t)   : número de documentos que contêm t
-    N       : total de documentos
-    |d|     : comprimento do documento d (nº de tokens)
-    avgdl   : comprimento médio dos documentos
-    k1, b   : parâmetros livres (defaults clássicos: k1 = 1.5, b = 0.75)
-
-A consulta acessa apenas as posting lists dos termos presentes na consulta
-(cumprindo a restrição de não percorrer toda a coleção a cada consulta).
+Só os documentos das posting lists dos termos da consulta recebem score.
+Documentos sem nenhum termo em comum têm score 0; para que o ranking tenha
+sempre `TOP_K_RETRIEVAL` documentos, ele é completado com
+documentos de score 0 na ordem de inserção do índice.
 """
 
 from __future__ import annotations
@@ -43,52 +32,46 @@ class BM25:
         self.N = index.num_docs
         self.avgdl = index.avg_doc_len or 1.0
 
-        # Para medir tempo médio de processamento de consultas.
         self.total_query_time: float = 0.0
         self.num_queries: int = 0
 
     def _idf(self, df: int) -> float:
-        """Calcula o IDF de um termo a partir da sua document frequency."""
+        """IDF de um termo a partir da sua document frequency."""
         return math.log((self.N - df + 0.5) / (df + 0.5) + 1.0)
 
     def score(self, query_tokens: List[str]) -> Dict[str, float]:
-        """
-        Calcula o score BM25 de TODOS os documentos que contêm ao menos um
-        termo da consulta. Retorna {doc_id: score}.
-
-        Usa um acumulador (`scores`) alimentado percorrendo apenas as posting
-        lists dos termos da consulta — nunca a coleção inteira.
-        """
+        """Score BM25 dos documentos que contêm ao menos um termo da consulta."""
         scores: Dict[str, float] = {}
-        # Reusa o IDF por termo (evita recalcular para termos repetidos).
         for term in set(query_tokens):
             postings = self.index.get_postings(term)
             if not postings:
                 continue
-            df = self.index.get_doc_freq(term)
-            idf = self._idf(df)
-
+            idf = self._idf(self.index.get_doc_freq(term))
             for doc_id, tf in postings.items():
                 dl = self.index.get_doc_length(doc_id)
-                # Normalização pelo comprimento do documento.
                 denom = tf + self.k1 * (1.0 - self.b + self.b * dl / self.avgdl)
-                term_score = idf * (tf * (self.k1 + 1.0)) / denom
-                scores[doc_id] = scores.get(doc_id, 0.0) + term_score
-
+                scores[doc_id] = scores.get(doc_id, 0.0) + idf * (tf * (self.k1 + 1.0)) / denom
         return scores
 
     def search(self, query_tokens: List[str], top_k: int = None) -> List[Tuple[str, float]]:
-        """
-        Devolve os `top_k` documentos ordenados por score decrescente como
-        lista de (doc_id, score). Mede e acumula o tempo de processamento.
-        """
+        """Top-k documentos como [(doc_id, score)]. Mede o tempo de processamento."""
         top_k = top_k or config.TOP_K_RETRIEVAL
         start = time.perf_counter()
         scores = self.score(query_tokens)
-        ranked = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
+        ranked = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)[:top_k]
+
+        # Completa com documentos de score 0 até top_k. Percorre apenas o
+        # necessário (no máximo top_k + |documentos pontuados| entradas).
+        if len(ranked) < top_k:
+            for doc_id in self.index.doc_order:
+                if len(ranked) >= top_k:
+                    break
+                if doc_id not in scores:
+                    ranked.append((doc_id, 0.0))
+
         self.total_query_time += time.perf_counter() - start
         self.num_queries += 1
-        return ranked[:top_k]
+        return ranked
 
     @property
     def avg_query_time(self) -> float:

@@ -4,14 +4,14 @@
 Pré-processa o corpus, constrói o índice invertido (do zero) e o vocabulário
 para a correção ortográfica.
 
-Passo 2 do pipeline:
-
     python scripts/02_build_index.py
 
-Arquivos gerados:
-    index/inverted_index.pkl   -> índice invertido serializado (pickle)
-    index/spell_vocabulary.json-> termos da coleção ANTES do stemming
-    outputs/index_stats.json   -> estatísticas do índice (p/ relatório)
+Gera:
+    index/inverted_index.pkl     -> índice invertido serializado
+    index/spell_vocabulary.json  -> {termo: DF} de todos os termos da coleção,
+                                    antes do stemming (stopwords incluídas; a
+                                    exclusão é decidida no dev pelo 04)
+    outputs/index_stats.json     -> estatísticas do índice
 """
 
 import json
@@ -20,36 +20,25 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-import config  # noqa: E402
-from src.data_loader import load_corpus  # noqa: E402
-from src.inverted_index import InvertedIndex  # noqa: E402
-from src.preprocessing import ensure_nltk_data, preprocess  # noqa: E402
+import config
+from src.data_loader import load_corpus
+from src.inverted_index import InvertedIndex
+from src.preprocessing import ensure_nltk_data, preprocess
+
+SURFACE_CFG = {
+    "lowercase": True,
+    "remove_punctuation": True,
+    "remove_digits": False,
+    "remove_stopwords": False,
+    "stem": False,
+}
 
 
 def build_spell_vocabulary(corpus: dict) -> dict:
-    """
-    Constrói o vocabulário para a correção ortográfica usando os termos da
-    coleção ANTES do stemming/lematização (exigência (i) do enunciado).
-
-    Como na busca as stopwords são removidas ANTES do stemming, o dicionário
-    também as exclui: assim, termos de conteúdo não competem com stopwords de
-    altíssima frequência ("of", "for", "or") no desempate por DF do corretor.
-
-    Retorna {termo: document_frequency}, para permitir desempate por
-    frequência no corretor ortográfico.
-    """
-    surface_cfg = {
-        "lowercase": True,
-        "remove_punctuation": True,
-        "remove_digits": False,
-        "remove_stopwords": True,   # exclui stopwords (sem stemming)
-        "stem": False,
-        "lemmatize": False,
-    }
+    """{termo: document frequency} sobre os termos antes do stemming."""
     df: dict = {}
     for text in corpus.values():
-        # Termos únicos por documento (DF conta documentos, não ocorrências).
-        for term in set(preprocess(text, cfg=surface_cfg)):
+        for term in set(preprocess(text, cfg=SURFACE_CFG)):
             df[term] = df.get(term, 0) + 1
     return df
 
@@ -68,12 +57,11 @@ def main() -> None:
     index = InvertedIndex().build(tokenized)
     index.save(config.INDEX_DIR / "inverted_index.pkl")
 
-    print("[3/3] Construindo vocabulário p/ correção ortográfica ...")
+    print("[3/3] Construindo vocabulário para a correção ortográfica ...")
     vocab = build_spell_vocabulary(corpus)
     with open(config.INDEX_DIR / "spell_vocabulary.json", "w", encoding="utf-8") as f:
         json.dump(vocab, f, ensure_ascii=False)
 
-    # Estatísticas exigidas pelo enunciado (requisito 2).
     stats = index.stats()
     print("\n--- Estatísticas do índice invertido ---")
     for k, v in stats.items():

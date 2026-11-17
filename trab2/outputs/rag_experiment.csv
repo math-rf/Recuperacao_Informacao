@@ -1,30 +1,10 @@
-﻿query_id,query,condition,context_doc_ids,prompt,answer,recall5,precision5,hit5,fidelidade,completude,utilidade,rastreabilidade,just_fidelidade,just_completude,just_utilidade,just_rastreabilidade
-PLAIN-68,What is Actually in Chicken Nuggets?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em Portuguese.
+query_id,query,condition,context_doc_ids,prompt,answer,recall5,precision5,hit5,fidelidade,completude,utilidade,rastreabilidade,just_fidelidade,just_completude,just_utilidade,just_rastreabilidade,status_revisao
+PLAIN-68,What is Actually in Chicken Nuggets?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em português.
 
 Pergunta: What is Actually in Chicken Nuggets?
 
-Resposta:","Os verdadeiros ingredientes dentro dos nuggets de frango podem variar dependendo da marca e do país onde são produzidos. No entanto, geralmente incluem:
-
-1. Frango processado ou fresco
-
-2. Sal
-
-3. Açúcar
-
-4. Aditivos alimentares (como proteínas vegetais)
-
-5. Gelatina
-
-6. Sementes de soja
-
-7. Óleo vegetal
-
-8. Aditivos químicos para manter o sabor
-
-9. Aditivos visuais (como corantes naturais)
-
-É importante notar que alguns produtos podem ter uma versão mais saudável com menos aditivos, mas ainda assim contêm algum nível significativo de açúcar e sal. É sempre bom verificar as informações nutricionais específicas das embalagens para obter detalhes precisos sobre os ingredientes presentes.",,,,0,2,2,N/A,Aparenta ter usado referências externas para gerar a resposta; não usou nenhuma das referências.,Resposta completa.,Responde bem à dúvida.,Não usa citações.
-PLAIN-68,What is Actually in Chicken Nuggets?,B,MED-2991;MED-1797;MED-2492;MED-2088;MED-1810,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em Portuguese.
+Resposta:","O que realmente está em um pão de queijo (chicken nuggets) é carne de galinha assada, geralmente preparada em forma de bolinho, e frequentemente adicionada a um pão de queijo. O nome ""nuggets"" vem do inglês ""nugget,"" que significa pequeno pedaço de carne, especialmente de galinha.",,,,0,0,1,N/A,Aparenta ter usado referências externas para gerar a resposta; não usou nenhuma das referências.,Confunde 'chicken nuggets' com 'pão de queijo'; não descreve o conteúdo dos nuggets.,Responde com informação incorreta sobre o produto.,N/A (condição sem RAG),alterada
+PLAIN-68,What is Actually in Chicken Nuggets?,B,MED-2991;MED-1797;MED-2492;MED-2088;MED-1810,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em português.
 
 Instruções:
 1. Baseie sua resposta exclusivamente no contexto fornecido.
@@ -45,20 +25,15 @@ Contexto (documentos recuperados):
 
 Pergunta: What is Actually in Chicken Nuggets?
 
-Resposta:","Conforme documentado no contexto fornecido:
+Resposta:","O texto do documento [1] afirma que ""Striated muscle (chicken meat) was not the predominant component in either nugget. Fat was present in equal or greater quantities along with epithelium, bone, nerve, and connective tissue."" Portanto, a composição principal dos nuggets é gordura, e o nome ""chicken nuggets"" é uma mistura de referências a um tipo de carne e a uma referência a uma marca de fast food.
 
-1. Doc ID: MED-2991
-   Texto: O autópsia de nuggets de frango indica ""nuggets de papagaio"". OBJETIVO: Determinar os componentes do nugget de duas cadeias de fast food nacionais. BACKGROUND: Os nuggets de frango têm se tornado uma parte importante da dieta americana. Buscamos determinar a composição atual desse alimento processado intensivo. MÉTODOS: Selecionaram aleatoriamente dois tipos diferentes de nuggets de fast food nacionais e fixaram-os em formalina, secaram e esterilizaram para análise microscópica. RESULTADOS: Não foi predominante o componente estrutural muscular (carne de frango) nos nuggets. A gordura estava presente com igual ou maior quantidade junto com epitélio, óscofagismo, nervo e tecidos conectivos. CONCLUSÃO: Os nuggets de frango são principalmente gordura, e seu nome é uma mera confusão. COPYRIGHT © 2013 Elsevier Inc. Todos os direitos reservados.
-
-A resposta baseada no contexto fornecido é:
-
-Os nuggets de frango são principalmente gordura, e seu nome é uma mera confusão.",0.0181818181818181,0.2,1.0,2,1,1,2,"Fiel a apenas uma referência, mas há outras relevantes.",Estrutura um pouco estranha; basicamente parafraseia uma das referências e a resposta fica muito simplificada.,"Responde mais ou menos, focando só na parte da gordura animal em vez do frango em si.",Informa a fonte e até a exibe.
-PLAIN-2450,Are Organic Foods Safer?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em Portuguese.
+Doc_ids usados como fonte: MED-2991.",0.01818181818181818,0.2,1.0,1,1,1,2,"Acerto principal (gordura, MED-2991), mas afirma que 'nuggets' é marca de fast food, sem base no contexto.",Responde à dúvida principal com base em MED-2991.,"Responde mais ou menos, focando só na parte da gordura animal em vez do frango em si.",Informa a fonte e até a exibe.,alterada
+PLAIN-2450,Are Organic Foods Safer?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em português.
 
 Pergunta: Are Organic Foods Safer?
 
-Resposta:","Não há evidências científicas suficientes para afirmar que os alimentos orgânicos são absolutamente mais seguros do que os convencionais. O conceito de ""saúde"" pode variar muito dependendo das pessoas e suas necessidades individuais. Algumas pessoas podem ter uma maior sensibilidade a certos produtos químicos usados na agricultura convencional, enquanto outras não. É importante lembrar que o consumo de alimentos saudáveis é um processo multifatorial envolvendo dieta balanceada, atividade física regular e saúde mental positiva.",,,,2,2,2,N/A,Fiel às conclusões dos textos.,Resposta completa.,Responde bem à pergunta.,Sem citações.
-PLAIN-2450,Are Organic Foods Safer?,B,MED-1140;MED-1178;MED-1144;MED-1179;MED-1173,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em Portuguese.
+Resposta:","Organic foods are often considered safer because they are grown without synthetic pesticides and fertilizers, which can leave residues on the food. However, the term ""organic"" does not guarantee safety, as it is regulated by certification standards. It is important to choose certified organic products and read labels carefully.",,,,2,2,2,N/A,"Afirmações coerentes com MED-1140 e MED-1178 (menos resíduos, mas 'orgânico' não garante segurança).",Resposta completa.,Responde bem à pergunta.,N/A (condição sem RAG),ajustada
+PLAIN-2450,Are Organic Foods Safer?,B,MED-1140;MED-1178;MED-1144;MED-1179;MED-1173,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em português.
 
 Instruções:
 1. Baseie sua resposta exclusivamente no contexto fornecido.
@@ -79,48 +54,45 @@ Contexto (documentos recuperados):
 
 Pergunta: Are Organic Foods Safer?
 
-Resposta:","Baseado no contexto fornecido, podemos concluir que:
+Resposta:","A resposta baseia-se no contexto fornecido. As informações sobre a segurança dos alimentos orgânicos são apresentadas em vários documentos. O documento [1] afirma que ""organic' does not automatically equal 'safe'"". O documento [2] menciona que ""consumption of organic foods may reduce exposure to pesticide residues and antibiotic-resistant bacteria"" e que ""the risk for contamination with detectable pesticide residues was lower among organic than conventional produce"". O documento [3] afirma que ""consumers perceived relatively high risks associated with the consumption and production of conventionally grown produce compared with other public health hazards"". O documento [4] afirma que ""organic products are now sold in specialty stores and conventional supermarkets"" e que ""organic farming has been demonstrated to have less environmental impact than conventional approaches"". O documento [5] afirma que ""Choice of organic foods is related to perceived consequences for human health and to environmentally friendly behaviour"".
 
-Aqui está a resposta baseada no contexto fornecido:
+Assim, as informações sobre a segurança dos alimentos orgânicos são encontradas nos documentos [1], [2], [3] e [4]. O documento [1] e [2] fornecem evidências sobre a segurança, enquanto [3] e [4] abordam outros aspectos, como a percepção de riscos e a saúde. A resposta final é:
 
-""Organic foods doem mais riscos para saúde do que alimentos convencionais.""
+**Resposta:** Sim, os alimentos orgânicos podem ser mais seguros, mas a segurança é questionada devido a evidências limitadas. O documento [1] afirma que ""organic' does not automatically equal 'safe'"". O documento [2] menciona que ""the risk for contamination with detectable pesticide residues was lower among organic than conventional produce"". O documento [3] afirma que ""consumers perceived relatively high risks associated with the consumption and production of conventionally grown produce compared with other public health hazards"". O documento [4] afirma que ""organic products are now sold in specialty stores and conventional supermarkets"" e que ""organic farming has been demonstrated to have less environmental impact than conventional approaches"".
 
-Esta resposta se baseia na conclusão da pesquisa de MED-1140, onde é mencionado que ""no presente estado de conhecimento, outros fatores parecem favorecer os alimentos orgânicos"", e que ""não existe uma compreensão clara"". Além disso, a pesquisa também destaca que ""as informações disponíveis são extremamente limitadas, impedindo generalizações"".
-
-Portanto, a resposta é afirmativa, pois aponta que existem riscos adicionais associados aos alimentos orgânicos, embora esses riscos ainda estejam sendo investigados e avaliados.
-
-Fontes utilizadas:
-- doc_id: MED-1140
-
-Nota: Não há informação suficiente para responder à pergunta específica sobre se os alimentos orgânicos são realmente mais seguros ou saudáveis do que os convencionais.",0.0526315789473684,0.4,1.0,1,1,1,2,Apresenta fidelidade a apenas uma das referências.,Resposta estruturada de forma estranha e com traduções erradas.,"Responde à pergunta, mas de maneira confusa.",Cita a referência base da resposta.
-PLAIN-153,How Should I Take Probiotics?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em Portuguese.
+**Doc_ids usados como fonte:** MED-1140, MED-1178, MED-1144, MED-1179.",0.05263157894736842,0.4,1.0,1,2,2,2,"Fiel à conclusão principal dos documentos, mas termina com 'Sim, podem ser mais seguros', contradizendo o resto da resposta.",Responde à pergunta com as conclusões principais dos documentos.,"Responde diretamente, apesar da conclusão final contraditória.",Cita a referência base da resposta.,alterada
+PLAIN-153,How Should I Take Probiotics?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em português.
 
 Pergunta: How Should I Take Probiotics?
 
-Resposta:","Para tomar probióticos corretamente, siga essas recomendações:
+Resposta:","Para tomar probióticos, siga estas orientações:
 
-1. Compre produtos confiáveis com certificações de qualidade.
+1. **Consiga a dosagem correta**: Consulte o manual do produto ou o médico ou farmacêutico para determinar a dose adequada para sua idade, peso e condição de saúde.
 
-2. Leia as instruções do fabricante antes de usar.
+2. **Tomar com alimento**: A melhor absorção ocorre quando os probióticos são tomados com alimentos, especialmente com leite, que ajuda a proteger a barriga do estômago.
 
-3. Comece com uma dose baixa e aumente gradualmente conforme recomendado.
+3. **Evite tomar com medicamentos**: Alguns medicamentos podem interagir com os probióticos. Verifique com seu médico se há qualquer conflito.
 
-4. Evite consumir alimentos fermentados ao mesmo tempo.
+4. **Evite tomar em vazio estomago**: O melhor momento é tomar os probióticos após o almoço ou durante o dia, evitando tomar-os em vazio estomago, que pode reduzir a absorção.
 
-5. Procure alimentos ricos em fibras para melhorar o funcionamento intestinal.
+5. **Evite tomar com líquidos quentes**: Aconselha-se tomar os probióticos com líquidos frios ou gelados, como leite ou chás, para melhorar a absorção.
 
-6. Mantenha um estilo de vida saudável geral.
+6. **Evite tomar com alimentos gordurosos ou açucarados**: Esses alimentos podem reduzir a eficácia dos probióticos.
 
-7. Consulte seu médico se tiver condições médicas específicas.
+7. **Evite tomar com medicamentos antiácidos**: Alguns medicamentos antiácidos podem inibir a absorção dos probióticos.
 
-8. Use apenas o que for indicado pela sua dieta ou saúde.
+8. **Evite tomar com medicamentos que aumentam a passagem intestinal**: Medicamentos como laxantes ou diuréticos podem afetar a absorção.
 
-9. Não tome mais de 10 milhões de coliformes por dia.
+9. **Evite tomar com alimentos que causam distensão abdominal**: Alimentos quentes, pesados ou muito ácidos podem causar distensão abdominal, prejudicando a absorção.
 
-10. Evite refrigerar os probióticos após aberto.
+10. **Evite tomar com alimentos que causam cólicas**: Alimentos ácidos ou muito quentes podem causar cólicas, prejudicando a absorção.
 
-Lembre-se de que cada pessoa é única e pode ter necessidades diferentes. Se você estiver tomando probióticos regularmente, converse com seu médico sobre como adaptá-los à sua rotina.",,,,2,2,2,N/A,Respeita o que foi dito nos documentos.,Resposta completa.,Sana a dúvida da pergunta.,Não cita as fontes.
-PLAIN-153,How Should I Take Probiotics?,B,MED-3679;MED-3692;MED-3695;MED-3693;MED-3680,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em Portuguese.
+11. **Evite tomar com alimentos que causam fadiga**: Alimentos pesados ou muito quentes podem causar fadiga, prejudicando a absorção.
+
+12. **Evite tomar com alimentos que causam fadiga**: Alimentos pesados ou muito quentes podem causar fadiga, prejudicando a absorção.
+
+13. **Evite tomar com alimentos que causam f",,,,1,1,1,N/A,"Conselhos sem base nos documentos (antiácidos, leite protegendo o estômago, líquidos gelados).",Resposta cortada no meio de uma frase e com itens repetidos.,Excesso de conselhos sem base; a parte útil se perde no texto.,N/A (condição sem RAG),alterada
+PLAIN-153,How Should I Take Probiotics?,B,MED-3679;MED-3692;MED-3695;MED-3693;MED-3680,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em português.
 
 Instruções:
 1. Baseie sua resposta exclusivamente no contexto fornecido.
@@ -141,19 +113,19 @@ Contexto (documentos recuperados):
 
 Pergunta: How Should I Take Probiotics?
 
-Resposta:","Para responder à pergunta ""Como devo tomar probióticos?"", baseado no contexto fornecido:
+Resposta:","A resposta baseia-se no contexto fornecido. A informação sobre a forma de tomar probióticos está disponível no contexto do documento [1], onde é mencionado que ""probiotics given 30 minutes before a meal did not survive in high numbers"" e que ""ideally, non-enteric coated bacterial probiotic products should be taken with or just prior to a meal containing some fats"".
 
-De acordo com o documento [1], os probióticos devem ser tomados com ou antes do almoço contendo algum tipo de gordura. O texto sugere que a proteína da refeição pode não ser tão importante para a sobrevivência dos germes bacterianos quanto a quantidade de gordura. Portanto, a recomendação é tomar probióticos com ou antes do almoço, especialmente aqueles que contenham alguma gordura.
+Portanto, a resposta é:
 
-Fontes utilizadas: [1]
+**Probiotics should be taken with or just prior to a meal containing some fats.**
 
-Esta resposta foi construída apenas com base nos dados fornecidos no contexto, sem fazer suposições adicionais.",0.1063829787234042,1.0,1.0,2,2,2,2,Condiz com a referência.,Completo.,Respondeu à pergunta de forma adequada.,Cita de onde tirou as informações.
-PLAIN-2850,More Antibiotics In White Meat or Dark Meat?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em Portuguese.
+**Doc_ids usados como fonte:** MED-3679.",0.10638297872340426,1.0,1.0,1,2,2,2,"Lê errado o estudo: diz que probióticos tomados 30 min antes não sobrevivem, mas o texto fala de 30 min depois. A conclusão final está em inglês.",Completo.,Respondeu à pergunta de forma adequada.,Cita de onde tirou as informações.,alterada
+PLAIN-2850,More Antibiotics In White Meat or Dark Meat?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em português.
 
 Pergunta: More Antibiotics In White Meat or Dark Meat?
 
-Resposta:",Não há evidências científicas que comprovem uma relação entre o consumo de mais antibióticos na carne branca ou preta e a saúde humana. A produção animal é regulada por leis sanitárias e éticas para garantir a qualidade e segurança dos produtos alimentícios. O uso de antibióticos em animais deve ser controlado para evitar resistência bacteriana e outros problemas ambientais. É importante consumir alimentos frescos e higienizados conforme as recomendações da agência de saúde local.,,,,0,1,1,N/A,A LLM alucinou ou usou fontes externas.,Traduz os termos literalmente.,Não responde a pergunta principal e dá voltas em vez de dizer que não há informação suficiente.,Não cita nenhuma fonte.
-PLAIN-2850,More Antibiotics In White Meat or Dark Meat?,B,MED-3891;MED-4358;MED-4983;MED-2584;MED-4482,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em Portuguese.
+Resposta:","A resposta é: **Não há diferença significativa entre mais antibióticos no branco ou no escuro.** Ambos os tipos de carne têm a mesma eficácia na luta contra infecções, e a necessidade de antibióticos é determinada pela saúde do animal e pelo manejo sanitário, não pelo tipo de carne.",,,,0,1,1,N/A,A LLM alucinou ou usou fontes externas.,Não responde corretamente ao tema; afirma uma comparação sem base nos documentos.,"Responde com afirmação sem base, que não se sustenta nos documentos.",N/A (condição sem RAG),ajustada
+PLAIN-2850,More Antibiotics In White Meat or Dark Meat?,B,MED-3891;MED-4358;MED-4983;MED-2584;MED-4482,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em português.
 
 Instruções:
 1. Baseie sua resposta exclusivamente no contexto fornecido.
@@ -174,13 +146,13 @@ Contexto (documentos recuperados):
 
 Pergunta: More Antibiotics In White Meat or Dark Meat?
 
-Resposta:","Não há informações específicas sobre comparação entre antibióticos na carne branca e negra neste documento. Portanto, não posso responder com base nesse contexto.",0.0,0.0,0.0,2,2,2,0,Resposta honesta: reconhece que o contexto não aborda a pergunta (não inventa).,Reconhece integralmente a ausência de informação no contexto.,Indica claramente que não há informação suficiente para responder.,"Não cita doc_id, pois não há fonte que responda à pergunta."
-PLAIN-2750,Preventing the Common Cold with Probiotics?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em Portuguese.
+Resposta:","Não há informação suficiente no contexto fornecido para responder à pergunta ""More Antibiotics In White Meat or Dark Meat?"" (Mais Antibióticos em Carne Branca ou Escura?).",0.0,0.0,0.0,2,1,1,0,Resposta honesta: reconhece que o contexto não aborda a pergunta (não inventa).,"Recusa com 'não há informação suficiente', mas MED-3891 trata de resistência antimicrobiana em carnes.","Não responde à pergunta, embora haja informação parcial nos documentos.","Não cita doc_id, pois não há fonte que responda à pergunta.",alterada
+PLAIN-2750,Preventing the Common Cold with Probiotics?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em português.
 
 Pergunta: Preventing the Common Cold with Probiotics?
 
-Resposta:","Não há evidências científicas suficientes para afirmar que os probióticos podem prevenir o resfriado comum. No entanto, alguns estudos sugerem que as bactérias presentes nos intestinos podem ajudar a manter uma boa saúde geral, incluindo a imunidade contra infeções respiratórias. Para prevenir o resfriado comum, é recomendável seguir boas práticas de higiene pessoal, como lavar as mãos frequentemente e evitar contato próximo com pessoas doentes.",,,,1,2,2,N/A,Alguns documentos dizem que ajudam a prevenir.,Resposta completa.,Responde adequadamente à dúvida.,Sem citações para as afirmações.
-PLAIN-2750,Preventing the Common Cold with Probiotics?,B,MED-3683;MED-3695;MED-3680;MED-3690;MED-4762,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em Portuguese.
+Resposta:","A prevenção do resfriado com probióticos é uma área de pesquisa em andamento, mas não há evidências conclusivas de que probióticos sejam eficazes na prevenção do resfriado. A saúde intestinal e a imunidade estão ligadas, mas não há estudos robustos que comprovem que a ingestão de probióticos reduz a incidência de resfriados. Portanto, não se pode afirmar que o uso de probióticos previna o resfriado de forma definitiva.",,,,0,2,1,N/A,"Afirma que 'não há estudos robustos', contrariando MED-3683 e MED-4762 (ensaios com redução de resfriados).",Resposta completa.,"Responde, mas com conclusão contrária ao contexto.",N/A (condição sem RAG),alterada
+PLAIN-2750,Preventing the Common Cold with Probiotics?,B,MED-3683;MED-3695;MED-3680;MED-3690;MED-4762,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em português.
 
 Instruções:
 1. Baseie sua resposta exclusivamente no contexto fornecido.
@@ -201,37 +173,13 @@ Contexto (documentos recuperados):
 
 Pergunta: Preventing the Common Cold with Probiotics?
 
-Resposta:","Baseado no contexto fornecido, podemos concluir que:
-
-Aqui está a resposta baseada no contexto fornecido:
-
-Probióticos podem ser úteis para prevenir infecções de cólon e diarreia associadas a antibióticos, além de reduzir a incidência de infecções respiratórias agudas (URTI).
-
-Para a questão específica ""Prevenção do resfriado com probióticos?"", a resposta seria:
-
-Sim, os probióticos podem ser úteis para prevenir infecções de cólon e diarreia associadas a antibióticos, além de reduzir a incidência de infecções respiratórias agudas (URTI).
-
-Fontes utilizadas:
-- [doc_id]: MED-3683
-- [doc_id]: MED-3695
-- [doc_id]: MED-3680
-- [doc_id]: MED-3690
-- [doc_id]: MED-4762
-
-Esta resposta foi construída baseando-se nos resultados dos estudos mencionados no contexto, especialmente na pesquisa sobre probióticos para prevenção da diarreia e infecções respiratórias agudas em crianças.",0.0677966101694915,0.8,1.0,2,2,2,1,Aparenta condizer com os documentos.,Resposta completa.,Respondeu adequadamente às dúvidas.,"Cita as fontes, mas não indica qual afirmação pertence a cada uma nem se todas dizem o mesmo."
-PLAIN-270,Is Caffeinated Tea Really Dehydrating?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em Portuguese.
+Resposta:","A resposta baseia-se no contexto fornecido. As informações sobre a eficácia de probióticos na prevenção do comum cold foram apresentadas no documento [1], onde é mencionado que a ingestão de Lactobacillus plantarum HEAL 9 (DSM 15312) e Lactobacillus paracasei 8700:2 (DSM 13434) reduziu a incidência de infecções de comum cold e outros sintomas. Portanto, as doc_ids usadas como fonte são MED-3683.",0.06779661016949153,0.8,1.0,1,2,2,2,"Afirma que o probiótico 'restaura a microbiota', mecanismo que não está no contexto.",Resposta completa.,Respondeu adequadamente às dúvidas.,Cita MED-3683 e lista doc_ids.,alterada
+PLAIN-270,Is Caffeinated Tea Really Dehydrating?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em português.
 
 Pergunta: Is Caffeinated Tea Really Dehydrating?
 
-Resposta:","Sim, algumas pessoas afirmam que o consumo excessivo de chá com cafeína pode levar a sintomas de desidratação como sede e fadiga. No entanto, é importante notar que:
-
-1. A quantidade exagerada de café ou chá pode afetar a hidratação do corpo.
-2. O corpo humano tem um sistema natural para manter a hidratação adequada.
-3. As pessoas que bebem muito café ou chá podem se sentir mais sedentários e menos dispostas a beber água.
-4. É recomendável consumir café e chá moderadamente e associá-los com uma dieta equilibrada e suficiente ingestão de água.
-
-Em suma, embora o consumo de café e chá possa levar a sintomas de desidratação em certos casos, não há evidências científicas robustas que demonstrem que o chá com cafeína seja definitivamente ""dehidratante"".",,,,2,2,1,N/A,Fiel às referências.,Resposta completa.,"Dá algumas voltas, mas responde; só não justifica bem.",Sem citação.
-PLAIN-270,Is Caffeinated Tea Really Dehydrating?,B,MED-4331;MED-5245;MED-878;MED-1645;MED-4439,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em Portuguese.
+Resposta:","Sim, o chá de café cíclico pode ser considerado de desidratação, pois contém cafeína, que pode aumentar a perda de água no corpo. A cafeína pode estimular a produção de sudorete e aumentar a sensação de sede, o que pode levar a uma maior perda de água. No entanto, é importante notar que a dehidratação é um efeito colateral comum em situações de estresse e não é uma característica essencial do chá de café cíclico.",,,,0,1,0,N/A,"Afirma 'sim, causa desidratação', contrariando MED-4331, e tem erros graves ('chá de café cíclico', 'sudorete').",Resposta incompleta e com termos incorretos.,Resposta errada sobre o tema.,N/A (condição sem RAG),alterada
+PLAIN-270,Is Caffeinated Tea Really Dehydrating?,B,MED-4331;MED-5245;MED-878;MED-1645;MED-4439,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em português.
 
 Instruções:
 1. Baseie sua resposta exclusivamente no contexto fornecido.
@@ -252,13 +200,17 @@ Contexto (documentos recuperados):
 
 Pergunta: Is Caffeinated Tea Really Dehydrating?
 
-Resposta:","Não há informações suficientes para confirmar se a bebida de chá cítrico realmente é desidratante ou não. O documento [1] menciona que a bebida de chá foi comparada com água e não mostrou diferenças significativas em termos de hidratação. No entanto, este é apenas um estudo de caso e não uma análise sistemática de todos os tipos de chá. Portanto, não podemos afirmar com certeza se a bebida de chá cítrico é desidratante ou não.",0.0384615384615384,0.4,1.0,2,2,2,2,Fiel à referência.,Resposta completa.,Responde bem à pergunta.,Cita bem a referência.
-PLAIN-2470,Is Milk Good for Our Bones?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em Portuguese.
+Resposta:","A resposta é baseada no contexto fornecido. O contexto documento [1] afirma que ""Black tea is not significantly different from water in the maintenance of normal hydration in human subjects"" e que ""the tea was prepared in a standardised way from tea bags and included 20 ml of semi-skimmed milk"". Isso indica que a teia não foi demonstrada como mais desidratante do que a água. Portanto, a resposta é:
+
+**Sim, Caffeinated Tea is not really dehydrating.** 
+
+**Doc_ids usados como fonte:** MED-4331.",0.038461538461538464,0.4,1.0,2,2,1,2,Fiel à referência.,Resposta completa.,"Conteúdo correto, mas começa com 'Sim' para a pergunta sobre desidratação e termina em inglês.",Cita bem a referência.,alterada
+PLAIN-2470,Is Milk Good for Our Bones?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em português.
 
 Pergunta: Is Milk Good for Our Bones?
 
-Resposta:","Sim, o leite é considerado uma fonte importante de cálcio para os ossos, que é um dos principais componentes necessários para manter a saúde óssea. No entanto, é importante consumir outros alimentos ricos em cálcio também, como frutas, legumes, grãos integrais e proteínas animais ou vegetais. Além disso, é recomendável consultar um nutricionista para uma dieta balanceada adequada às suas necessidades individuais.",,,,2,2,2,N/A,Fiel às referências.,Resposta completa.,Resposta útil e deixa ressalvas sobre outros detalhes da questão.,Sem citação.
-PLAIN-2470,Is Milk Good for Our Bones?,B,MED-1337;MED-1340;MED-1338;MED-904;MED-4902,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em Portuguese.
+Resposta:","A leite é benéfico para os ossos, pois é rico em cálcio e vitamina D, que são essenciais para a formação e manutenção de uma saúde óssea adequada.",,,,2,2,2,N/A,Fiel às referências.,Resposta completa.,"Resposta útil e direta, mas sem ressalvas sobre os limites da evidência.",N/A (condição sem RAG),ajustada
+PLAIN-2470,Is Milk Good for Our Bones?,B,MED-1337;MED-1340;MED-1338;MED-904;MED-4902,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em português.
 
 Instruções:
 1. Baseie sua resposta exclusivamente no contexto fornecido.
@@ -279,17 +231,15 @@ Contexto (documentos recuperados):
 
 Pergunta: Is Milk Good for Our Bones?
 
-Resposta:","Baseado no contexto fornecido, podemos concluir que:
+Resposta:","A resposta é que a ingestão de leite não foi associada a uma redução do risco de fratura óssea em mulheres, conforme mostrado em um estudo de meta-análise. No entanto, em homens, houve uma associação significativa, mas essa foi atenuada quando foi adicionado o altura alcançada. O estudo concluiu que não há uma associação geral entre a ingestão de leite e o risco de fratura óssea em mulheres, mas há uma associação em homens, que pode ser mediada pela altura. Portanto, a resposta é que a ingestão de leite não é benéfica para os ossos em geral, mas pode ser considerada em homens, com base nos resultados do estudo.
 
-Milk pode ser bom para os ossos devido às suas propriedades nutricionais e hormonais. No entanto, seu benefício na prevenção de fraturas de vértebras depende do tamanho da porção consumida diariamente e das características individuais dos indivíduos. Além disso, algumas pesquisas sugerem que uma alta ingestão de leite pode aumentar o risco de osteoporose em homens, embora ainda não tenham sido confirmadas estatisticamente significativamente. Portanto, é importante consultar um profissional de saúde antes de adicionar leite à dieta ou alterar qualquer medida alimentar.",0.0410958904109589,0.6,1.0,2,1,2,0,Fiel aos textos e alinhada às conclusões deles.,"Resposta completa, mas deixa o termo 'Milk' em inglês.",Responde bem à pergunta.,Não cita fontes.
-PLAIN-2430,Preventing Brain Loss with B Vitamins?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em Portuguese.
+Doc_ids usados como fonte: MED-1337, MED-1340, MED-1338.",0.0410958904109589,0.6,1.0,1,1,1,2,"Conclui que o leite 'não é benéfico para os ossos em geral', o que os documentos não sustentam (tratam de fratura).",Aborda apenas fraturas; deixa de lado o cálcio e a vitamina D citados em MED-1337.,"Resposta parcial, com conclusão geral não sustentada.","Lista MED-1337, MED-1340 e MED-1338 como fontes.",alterada
+PLAIN-2430,Preventing Brain Loss with B Vitamins?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em português.
 
 Pergunta: Preventing Brain Loss with B Vitamins?
 
-Resposta:","Prevenção da perda cerebral com vitamina B? 
-
-A vitamina B é um grupo de vitaminas que desempenham papéis importantes na saúde do cérebro. Ela está envolvida no metabolismo celular, contribui para o funcionamento adequado dos neurônios e pode ajudar a prevenir algumas doenças cerebrais. Alguns estudos sugerem que uma dieta rica em alimentos contendo vitamina B pode ser benéfica para a saúde cerebral, mas ainda não há evidências definitivas sobre sua eficácia preventiva contra a perda cerebral específica. É importante consultar um profissional de saúde antes de adicionar qualquer suplemento à dieta ou tomar medidas preventivas relacionadas ao cérebro.",,,,1,2,2,N/A,"Fiel a algumas fontes, mas não conta que há mais de uma visão sobre o assunto (algumas dizem que reduz, outras não).",Resposta completa.,Responde à pergunta de forma adequada.,Não cita fontes.
-PLAIN-2430,Preventing Brain Loss with B Vitamins?,B,MED-994;MED-980;MED-5128;MED-986;MED-4929,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em Portuguese.
+Resposta:","A prevenção da perda de cérebro com vitaminas B envolve, principalmente, a suplementação com vitaminas B12, B9 (folato) e B6, que são essenciais para a manutenção da saúde cerebral. Elas ajudam na produção de neurotransmissores, na manutenção da memória e na função cognitiva. A deficiência dessas vitaminas pode levar a sintomas de perda de memória, ansiedade e outros problemas cognitivos. Portanto, a suplementação adequada de vitaminas B pode contribuir para a prevenção da perda de cérebro.",,,,1,2,2,N/A,"Afirma que suplementar vitaminas B previne a perda cerebral, sem base nos documentos e sem mencionar MED-986 (sem melhora cognitiva). Avaliar se F cai para 0.",Resposta completa.,Responde à pergunta de forma adequada.,N/A (condição sem RAG),a confirmar
+PLAIN-2430,Preventing Brain Loss with B Vitamins?,B,MED-994;MED-980;MED-5128;MED-986;MED-4929,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em português.
 
 Instruções:
 1. Baseie sua resposta exclusivamente no contexto fornecido.
@@ -310,24 +260,13 @@ Contexto (documentos recuperados):
 
 Pergunta: Preventing Brain Loss with B Vitamins?
 
-Resposta:","Baseado no contexto fornecido, podemos concluir que:
-
-A resposta para ""Preventing Brain Loss with B Vitamins?"" seria afirmativa. O documento [1] menciona claramente que uma estratégia de modificação de riscos genéticos pode incluir redução da homocisteína através do uso de vitamina B. Além disso, o documento [1] destaca que a suplementação com vitamina B pode retardar a envelhecimento cerebral e diminuir a atrofia cerebral específica dos tecidos grises (GM) específicos vulneráveis à doença de Alzheimer (AD), especialmente na região médio-temporal. Portanto, a resposta é sim, pois a suplementação com vitamina B pode ser eficaz em prevenir a perda cerebral.
-
-Fontes utilizadas:
-- Doc_id: MED-994
-- Doc_id: MED-980
-- Doc_id: MED-5128
-- Doc_id: MED-986
-- Doc_id: MED-4929
-
-Estas são as doc_ids que foram usadas como fonte para responder à pergunta.",0.0652173913043478,0.6,1.0,1,2,2,2,Não cita que alguns resultados variam com características das pessoas.,Resposta veio completa.,Sana bem as dúvidas.,Indica de onde tira as afirmações.
-PLAIN-238,How Chemically Contaminated Are We?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em Portuguese.
+Resposta:","As informações sobre a prevenção da perda cerebral com tratamento de vitaminas B foram fornecidas no contexto do documento [1]. O texto afirma que o tratamento com vitaminas B (folic acid 0,8 mg, vitamina B6 20 mg, vitamina B12 0,5 mg) pode lento o processo de perda de volume cerebral, especialmente em regiões específicas associadas ao processo de demência. Portanto, as doc_ids usadas como fonte são [1].",0.06521739130434782,0.6,1.0,1,1,2,1,Não cita que alguns resultados variam com características das pessoas.,"Não considera MED-986, que não encontrou melhora cognitiva com vitaminas B.",Sana bem as dúvidas.,Cita apenas '[1]' em vez de MED-994.,alterada
+PLAIN-238,How Chemically Contaminated Are We?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em português.
 
 Pergunta: How Chemically Contaminated Are We?
 
-Resposta:","Não há uma resposta definitiva para essa pergunta, pois o estudo da contaminação química é um campo avançado que envolve muitos fatores complexos. No entanto, podemos dizer que a maioria das pessoas no mundo está abaixo dos níveis considerados potencialmente prejudiciais ao corpo humano. A exposição excessiva a substâncias químicas poderia levar a danos sérios se não for controlada adequadamente. É importante manter-se informado sobre as possíveis fontes de contaminantes químicos na sua área e tomar medidas preventivas quando necessário.",,,,2,2,2,N/A,Condiz com as referências.,Resposta completa.,Justifica bem.,Não cita fontes.
-PLAIN-238,How Chemically Contaminated Are We?,B,MED-2391;MED-4739;MED-2493;MED-4653;MED-2994,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em Portuguese.
+Resposta:","A questão ""How Chemically Contaminated Are We?"" refere-se à extensão e gravidade da contaminação química que a sociedade atual está exposta, incluindo substâncias químicas tóxicas, substâncias orgânicas, metais pesados e outros contaminantes que estão sendo liberados no ambiente, na água, no ar e na terra. A contaminação química é um problema global, com impactos significativos na saúde humana, na biodiversidade e na sustentabilidade ambiental. A resposta depende de fatores como o uso de produtos químicos, a indústria, a agricultura, a tecnologia e a gestão ambiental.",,,,1,2,1,N/A,"Afirmações gerais (contaminação industrial, agrícola, urbanização) sem respaldo nos documentos.","Resposta genérica, sem dados dos documentos.",Não traz informação útil dos documentos.,N/A (condição sem RAG),alterada
+PLAIN-238,How Chemically Contaminated Are We?,B,MED-2391;MED-4739;MED-2493;MED-4653;MED-2994,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em português.
 
 Instruções:
 1. Baseie sua resposta exclusivamente no contexto fornecido.
@@ -348,21 +287,15 @@ Contexto (documentos recuperados):
 
 Pergunta: How Chemically Contaminated Are We?
 
-Resposta:","Baseado no contexto fornecido, podemos concluir que a pesquisa mencionada na documentação médica MED-2391 está focada principalmente nos contaminantes orgânicos persistentes (POPs) como perflúoratos de carbono (PFCs), pesticidas organoclóricos e polifenilfenolides (PCBs) em amostras de alimentos compostos coletadas em Dallas, Texas, Estados Unidos. A pesquisa objetiva medir os níveis dessas substâncias em diferentes tipos de alimentos comprados em supermercados da cidade em 2009.
+Resposta:","Não há informação suficiente no contexto fornecido para responder à pergunta ""How Chemically Contaminated Are We?"".
 
-Não há informações específicas sobre quais documentos médicos ou dados científicos foram utilizados para essa pesquisa. Portanto, não posso afirmar com certeza quais doc_ids foram usados como fonte.
-
-Resposta baseada no contexto fornecido:
-
-""Perfluorinated Compounds, Polychlorinated Biphenyls, and Organochlorine Pesticide Contamination in Composite Food Samples from Dallas, Texas, USA""
-
-Esta resposta se baseia apenas no contexto fornecido, sem fazer suposições adicionais.",0.0185185185185185,0.2,1.0,1,1,0,2,"Fiel a uma referência, mas ignora as outras.",Resposta incompleta e com estrutura estranha.,Não responde direito à pergunta.,Cita a referência que usou.
-PLAIN-3342,Is Coconut Milk Good For You?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em Portuguese.
+Doc_ids usados como fonte: MED-2391, MED-4739, MED-2493, MED-4653, MED-2994.",0.018518518518518517,0.2,1.0,1,0,0,1,"Fiel a uma referência, mas ignora as outras.","Diz que não há informação, mas MED-2391 traz concentrações medidas de contaminantes.",Não responde direito à pergunta.,"Lista as 5 fontes, mas o texto só usa MED-2391.",alterada
+PLAIN-3342,Is Coconut Milk Good For You?,A,,"Responda à seguinte pergunta de forma direta e objetiva, em português.
 
 Pergunta: Is Coconut Milk Good For You?
 
-Resposta:","Sim, o leite de coco é benéfico para a saúde. Ele contém antioxidantes, vitaminas e minerais que podem ajudar na prevenção de doenças crônicas como diabetes e colesterol alto. No entanto, é importante consumir-o moderadamente e evitar excessos devido às calorias presentes no leite de coco.",,,,2,2,2,N/A,Fiel às referências.,Resposta completa.,Responde bem à pergunta.,Sem rastreio.
-PLAIN-3342,Is Coconut Milk Good For You?,B,MED-5014;MED-5015;MED-4000;MED-4002;MED-5012,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em Portuguese.
+Resposta:","Coconut Milk é uma alternativa saudável para o leite de vaca, especialmente para quem busca uma fonte de gordura ômega-3 e de proteínas. É rico em nutrientes, como ômega-3, que são benéficos para a saúde cardiovascular e cerebral. No entanto, é importante consumi-lo em quantidade moderada e, se for usado como substituto de leite, optar por variedades de baixa gordura.",,,,1,2,1,N/A,"Atribui ômega-3 ao leite de coco, sem base no contexto.",Resposta completa.,Resposta com informação incorreta e pouca utilidade.,N/A (condição sem RAG),alterada
+PLAIN-3342,Is Coconut Milk Good For You?,B,MED-5014;MED-5015;MED-4000;MED-4002;MED-5012,"Você é um assistente que responde perguntas usando APENAS o contexto fornecido abaixo. Responda em português.
 
 Instruções:
 1. Baseie sua resposta exclusivamente no contexto fornecido.
@@ -383,4 +316,6 @@ Contexto (documentos recuperados):
 
 Pergunta: Is Coconut Milk Good For You?
 
-Resposta:","Não há informações específicas sobre a saúde ou benefícios de consumir leite de coco neste contexto. Portanto, não posso afirmar se leite de coco é bom para você com base na informação fornecida.",0.6666666666666666,0.4,1.0,1,2,1,0,"Os documentos não citam diretamente, mas citam fatores que permitiriam uma resposta mais completa.",A resposta está completa.,"Até respondeu, mas não acabou sendo útil no final.",Não há citações a nenhum documento.
+Resposta:","A resposta baseia-se no contexto fornecido. A pergunta ""Is Coconut Milk Good For You?"" não é diretamente respondida no contexto. No entanto, o contexto menciona que o consumo de coco é associado a uma dieta com baixo consumo de grãos e cereais, e que o consumo de gorduras saturadas, incluindo o do coco, não é um preditor de doenças cardíacas em essa cultura alimentar. Além disso, o contexto menciona que o consumo de gorduras saturadas, incluindo o do coco, não é um preditor de CHD em essa cultura. Portanto, não há evidência suficiente no contexto para afirmar que o leite de coco é bom para você.
+
+Doc_ids usados como fonte: MED-5014, MED-5015, MED-4000, MED-4002, MED-5012.",0.6666666666666666,0.4,1.0,1,2,1,2,"Lê mal o estudo: associa o consumo de coco a menor ingestão de cereais, quando a diferença é entre casos e controles.",A resposta está completa.,"Até respondeu, mas não acabou sendo útil no final.","Lista MED-5014, MED-5015, MED-4000, MED-4002 e MED-5012.",a confirmar

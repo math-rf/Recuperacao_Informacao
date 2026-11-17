@@ -1,7 +1,7 @@
 """
 06_analysis.py
 ==============
-Gera artefatos de análise por consulta para o relatório (requisitos 7, 10 e 14).
+Gera os artefatos de análise por consulta (requisitos 7, 10 e 14).
 
 Executa (requer os passos 03 e, opcionalmente, 05):
 
@@ -20,15 +20,15 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-import config  # noqa: E402
-from src.analysis import (  # noqa: E402
+import config
+from src.analysis import (
     extreme_queries,
     format_top_k,
     moved_documents,
     ndcg_difference,
     rerank_analysis,
 )
-from src.data_loader import load_all  # noqa: E402
+from src.data_loader import load_all
 
 
 def load_rankings_dict(csv_path):
@@ -48,9 +48,7 @@ def main() -> None:
     )
     metrics = pd.read_csv(config.OUTPUT_DIR / "metrics_per_query.csv")
 
-    # ------------------------------------------------------------------
     # Requisito 7 — lexical x semântico
-    # ------------------------------------------------------------------
     print("=== Requisito 7: comparação lexical x semântico (NDCG@10) ===")
     lex_ndcg = metrics[metrics.model == "lexical"].set_index("query_id")["NDCG10"]
     sem_ndcg = metrics[metrics.model == "semantic"].set_index("query_id")["NDCG10"]
@@ -83,9 +81,7 @@ def main() -> None:
         f.write("\n".join(lines))
     print(f"  -> {config.OUTPUT_DIR / 'analysis_lexical_vs_semantic.txt'}")
 
-    # ------------------------------------------------------------------
     # Requisito 10 — análise do reranking
-    # ------------------------------------------------------------------
     print("\n=== Requisito 10: análise do reranking ===")
     hyb_ndcg = metrics[metrics.model == "hybrid"].set_index("query_id")["NDCG10"].to_dict()
     rer_ndcg = metrics[metrics.model == "reranking"].set_index("query_id")["NDCG10"].to_dict()
@@ -132,9 +128,7 @@ def main() -> None:
         f.write("\n".join(rlines))
     print(f"  -> {config.OUTPUT_DIR / 'analysis_reranking.txt'}")
 
-    # ------------------------------------------------------------------
     # Requisito 14 — orientação p/ análise de falhas do RAG
-    # ------------------------------------------------------------------
     print("\n=== Requisito 14: análise de falhas ponta a ponta ===")
     print("  Após preencher as notas em rag_experiment.csv, compare a média das")
     print("  notas A x B por consulta para escolher: (i) RAG melhorou claramente,")

@@ -1,22 +1,19 @@
 """
 spell_correction.py
 ===================
-Tolerância a erros / correção ortográfica (requisito 4 do enunciado).
-
-Abordagem exigida (em três passos):
+Correção ortográfica de termos desconhecidos em três passos:
   1. Geração de candidatos : k-gramas de caracteres (índice invertido de
                              k-gramas -> termos do vocabulário)
   2. Filtragem             : coeficiente de Jaccard entre os conjuntos de
                              k-gramas do termo e do candidato
-  3. Seleção               : distância de edição (Levenshtein) -> menor custo
+  3. Seleção               : distância de edição, com desempate pelo termo de
+                             maior frequência documental (DF)
 
-O dicionário é formado pelos TERMOS DA COLEÇÃO ANTES DO STEMMING/LEMATIZAÇÃO
-(exigência (i) do enunciado). Um termo é "desconhecido" quando não está no
-dicionário; só esses termos passam por correção.
+O dicionário é formado pelos termos da coleção antes do stemming. Um termo é
+"desconhecido" quando não está no dicionário; só esses termos são corrigidos.
 
-Este módulo também contém a função `introduce_typo`, usada no experimento de
-tolerância a erros para inserir erros de diferentes tipos (inserção, remoção,
-substituição e troca de ordem de caracteres).
+A função `introduce_typo` gera erros de inserção, remoção, substituição e
+troca de ordem de caracteres, usados no experimento de tolerância a erros.
 """
 
 from __future__ import annotations
@@ -29,7 +26,7 @@ def char_ngrams(word: str, n: int = 3) -> Set[str]:
     """
     Devolve o conjunto de k-gramas de caracteres de `word`, com padding nas
     bordas (caracteres especiais de início/fim) para capturar prefixos e
-    sufixos. Ex.: "teste" com n=3 -> {"$$t", "$te", "tes", "est", "ste", "te$"}.
+    sufixos. Ex.: "teste" com n=3 -> {"$$t", "$te", "tes", "est", "ste", "te$", "e$$"}.
     """
     padded = "$" * (n - 1) + word.lower() + "$" * (n - 1)
     if len(padded) < n:
@@ -47,14 +44,35 @@ def jaccard(a: Set[str], b: Set[str]) -> float:
     return len(a & b) / len(union)
 
 
+def levenshtein(a: str, b: str) -> int:
+    """
+    Distância de edição de Levenshtein (inserção, remoção e substituição, custo 1).
+    Transposição de caracteres custa 2 (duas substituições).
+    """
+    if a == b:
+        return 0
+    if not a:
+        return len(b)
+    if not b:
+        return len(a)
+    if len(a) > len(b):
+        a, b = b, a
+    prev = list(range(len(b) + 1))
+    for i in range(1, len(a) + 1):
+        curr = [i] + [0] * len(b)
+        for j in range(1, len(b) + 1):
+            cost = 0 if a[i - 1] == b[j - 1] else 1
+            curr[j] = min(prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + cost)
+        prev = curr
+    return prev[-1]
+
+
 def damerau_levenshtein(a: str, b: str) -> int:
     """
     Distância de edição com suporte a TRANSPOSIÇÃO de caracteres adjacentes
     (variante Optimal String Alignment — OSA). Diferente do Levenshtein puro,
     "cemo" -> "ecmo" custa 1 (troca de "c" e "e"), e não 2.
 
-    Isso é importante porque o enunciado exige tratar "troca da ordem de
-    caracteres" como um dos tipos de erro a serem corrigidos.
     """
     a, b = a.lower(), b.lower()
     if a == b:
@@ -101,7 +119,9 @@ class SpellCorrector:
     """
 
     def __init__(self, ngram_size: int = 3, jaccard_threshold: float = 0.2,
-                 max_candidates: int = 50, max_edit_distance: int = 3) -> None:
+                 max_candidates: int = 50, max_edit_distance: int = 3,
+                 distance=None) -> None:
+        self.distance = distance or damerau_levenshtein
         self.n = ngram_size
         self.jaccard_threshold = jaccard_threshold
         self.max_candidates = max_candidates
@@ -118,8 +138,7 @@ class SpellCorrector:
     def build_dictionary(self, terms: Set[str], frequencies: Dict[str, int] = None) -> None:
         """
         Constrói o dicionário (vocabulário) e o índice de k-gramas a partir de
-        um conjunto de termos. IMPORTANTE: os termos devem estar SEM stemming/
-        lematização (conforme exigência do enunciado).
+        um conjunto de termos, que devem estar SEM stemming.
 
         `frequencies` (opcional) mapeia termo -> document frequency (DF) e é
         usado para desempatar candidatos com a mesma distância de edição,
@@ -139,11 +158,8 @@ class SpellCorrector:
         Gera candidatos: termos do vocabulário que compartilham ao menos um
         k-grama com o termo, filtrados pelo coeficiente de Jaccard.
 
-        IMPORTANTE: a coleta percorre TODOS os k-gramas do termo (sem cortar a
-        iteração pelo tamanho do pool), pois a ordem de um `set` é não
-        determinística entre execuções e um corte precoce poderia excluir o
-        candidato correto de forma aleatória. Se sobrarem muitos candidatos
-        após o filtro de Jaccard, mantemos os de maior Jaccard (determinístico).
+        Se restarem mais candidatos que `max_candidates` após o filtro de
+        Jaccard, mantêm-se os de maior Jaccard.
         """
         grams = char_ngrams(term, self.n)
         if not grams:
@@ -190,7 +206,7 @@ class SpellCorrector:
         best: Optional[str] = None
         best_dist = self.max_edit_distance + 1
         for cand in candidates:
-            d = damerau_levenshtein(term, cand)
+            d = self.distance(term, cand)
             if d < best_dist:
                 best_dist = d
                 best = cand
@@ -210,9 +226,7 @@ class SpellCorrector:
         return best
 
 
-# ----------------------------------------------------------------------
 # Geração de erros ortográficos (para o experimento de tolerância a erros)
-# ----------------------------------------------------------------------
 def introduce_typo(word: str, typo_type: str, rng: random.Random) -> str:
     """
     Insere um erro ortográfico em `word` segundo `typo_type`:
